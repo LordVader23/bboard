@@ -1,0 +1,1362 @@
+@charset "utf-8";
+* {
+	margin: 0px;
+	padding: 0px;
+	outline: none;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	width: 100%;
+	height: 100%;
+	color: #333333;
+	font-family: "Segoe UI", sans-serif;
+	font-size: 1em;
+}
+
+header, footer {
+	width: 100%;
+	min-height: 50px;
+	background-color: #373737;
+	float: left;
+}
+
+header {
+	border-bottom: 2px solid silver;
+}
+
+footer {
+	border-top: 2px solid silver;
+	margin-top: 25px;
+}
+
+a {
+	color: #671FEC;
+	text-decoration: none;
+	transition: all.6s ease;
+}
+
+a:hover {
+	color: black;
+	text-decoration: none;
+	transition: all.6s ease;
+}
+
+a:active {
+	color: aqua;
+}
+
+::selection {
+	background: #00FC05;
+	color: #F7F7F7;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+#main_title {
+	font-size: 2em;
+	margin: 10px 30px 10px 10px;
+	color: crimson;
+	
+}
+
+#auth,  #reg, #profile {
+	font-size: 1.3em;
+	margin-right: 20px;
+	float: right;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	display: block;
+	padding: 5px;
+	border-radius: 7px;
+	color: red;
+}
+
+#auth:hover,  #reg:hover, #profile:hover {
+	background-color: chocolate;
+	color: white;
+}
+
+.left {
+	float: left;
+	margin: 10px;
+	color: red;
+}
+
+.social {
+	float: right;
+	width: 40px;
+	height: 40px;
+	margin: 10px;
+}
+
+.clear {
+	clear: both;
+}
+
+#page_wrap:after {
+	content: "";
+	display: block;
+}
+
+footer, #page_wrap:after {
+	height: 10px;
+}
+
+#page_wrap {
+	min-height: 94%;
+	margin-bottom: -10px;
+}
+
+#menuhreves a {
+	margin: 10px;
+}
+
+#menu hr {
+	max-width:  100%;
+	width: 500px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	display: block;
+}
+
+#menu h2 {
+	color: #4D4D4D;
+}
+
+#wrapper {
+	float: left;
+	width: 100%;
+}
+
+/*Wrapper articles styles*/
+
+#wrapper #articles {
+	float: left;
+	width: 66%;
+	margin-left: 4%;
+	margin-top: 35px;
+}
+
+#wrapper #articles #rubric_name {
+	margin-bottom: 10px;
+	color: red;
+	clear: both;
+}
+
+#wrapper #articles article {
+	float: left;
+	background-color: #f7f7f7;
+	border: 0px;
+	border-radius: 15px;
+	padding: 20px;
+	margin-bottom: 25px;
+	margin-right: 1%;
+	width: 26%;
+}
+
+@media (max-width: 1099px) and (min-width: 900px){
+	#wrapper #articles article {
+		width: 25%;
+		margin-top: 25px;
+		min-height: 300px;
+		margin-left: 2%;
+}
+	
+	#wrapper #articles {
+		float: left;
+		width: 80%;
+		margin-left: 10%;
+	}
+}
+
+@media (max-width: 800px) and (min-width: 100px){
+	#wrapper #articles article {
+		width: 40%;
+		margin-top: 25px;
+		margin-left: 2%;
+}
+	
+	#wrapper #articles {
+		float: left;
+		width: 80%;
+		margin-left: 10%;
+}
+}
+
+@media (max-width: 720px) and (min-width: 600px){
+	#wrapper #articles article {
+		width: 96%;
+		margin-top: 25px;
+		margin-left: 2%;
+	}
+	
+	#wrapper #articles {
+		float: left;
+		width: 80%;
+		margin-left: 10%;
+}
+}
+/*
+@media (min-width: 700px){
+#wrapper #articles article {
+	width: 25%;
+	margin-top: 25px;
+	min-height: 400px;
+	margin-left: 2%;
+}
+}
+
+@media (max-width: 699px){
+#wrapper #articles article {
+	width: 96%;
+	margin-top: 25px;
+	margin-left: 2%;
+}
+
+#wrapper #articles {
+	float: left;
+	width: 80%;
+	margin-left: 10%;
+}
+}
+
+@media (min-width: 900px){
+	#wrapper #articles article {
+	width: 25%;
+	margin-top: 25px;
+	min-height: 300px;
+	margin-left: 2%;
+}
+	
+#wrapper #articles {
+	float: left;
+	width: 66%;
+	margin-left: 1%;
+}
+}
+
+@media (max-width: 899px) and (min-width: 700px){
+	#wrapper #articles article {
+	width: 40%;
+	margin-top: 25px;
+	margin-left: 2%;
+}
+	
+#wrapper #articles {
+	float: left;
+	width: 80%;
+	margin-left: 10%;
+}
+}
+*/
+
+#wrapper #articles article img {
+	height: 200px;
+	border: 1px solod red;
+	min-width: 20%;
+	display: block;
+	width: 90%;
+	margin-left: 5%;
+}
+
+#wrapper #articles article p {
+	font-size: 1.1em;
+	margin: 10px;
+}
+
+#wrapper #articles article a {
+	display: block;
+	padding: 3px;
+	background-color: aquamarine;
+	border-radius: 5px;
+}
+
+#wrapper #articles article a:hover {
+	background-color: #F004BB;
+}
+
+/* Detail styles*/
+#detail {
+	width: 60%;
+	margin-left: 20%;
+	margin-top: 35px;
+	border-radius: 15px;
+	background-color: #f7f7f7;
+	padding: 10px;
+}
+
+#detail center {
+	margin-top: 10px;
+	margin-bottom: 30px;
+	display: block;
+}
+
+#detail center h1 {
+	font-family: "Segoe UI", sans-serif;
+	color: #AC0E11;
+}
+
+#datetime {
+	border-bottom: 1px solid silver;
+	width: 250px;
+}
+
+#datetime p {
+	font-size: 1.1em;
+}
+
+#detail img {
+	width: 80%;
+	margin-left: 10%;
+	margin-top: 35px;
+	height: 500px;
+}
+
+#detail #contents {
+	margin-top: 30px;
+	width: 60%;
+	margin-left: 20%;
+	border: 2px solid silver;
+	padding: 20px;
+}
+
+#detail #contents p {
+	margin-bottom: 10px;
+	font-size: 1.3em;
+	color: aqua;
+	
+}
+
+#detail #contents ol {
+	margin-left: 5px;
+}
+
+#detail .text {
+	margin-top: 25px;
+	margin-left: 10px;
+}
+
+.item {
+	margin: 10px;
+}
+
+#detail #price {
+	width: 80%;
+	margin-left: 8%; 
+	margin-top: 20px;
+}
+
+#detail #back {
+	width: 10%;
+	margin-top: 30px;
+	margin-bottom: 15px;
+	margin-left: 80%;
+	display: block;
+	font-size: 1.5em;
+}
+
+/* Styles for sidebar */
+aside {
+	margin-top: 35px;
+	margin-left: 1%;
+	padding: 10px;
+	float: left;
+	width: 15%;
+	min-height: 500px;
+	background-color: #f7f7f7;
+	border-radius: 15px;
+	display: block;
+}
+
+.sidebar_block {
+	width: 100%;
+	margin-top: 15px;
+	float: left;
+}
+
+.sidebar_img {
+	margin-left: 5px;
+	width: 40px;
+	height: 40px;
+	float: left;
+}
+
+.sidebar_p {
+	margin-top: 5px;
+	margin-left: 25px;
+	float: left;
+	font-size: 1.1em;
+}
+
+@media (max-width: 1099px) and (min-width: 900px){
+	aside {
+		display: none;
+	}
+}
+
+@media (max-width: 800px) and (min-width: 100px){
+	aside {
+		display: none;
+	}
+}
+
+
+/* Styles for soc_block*/
+
+#main_soc_block {
+	width: 100%;
+	padding: 2% 0;
+	border-bottom: 2px solid silver;
+	border-top: 2px solid silver;
+	float: left;
+	margin-top: 30px;
+	background-color: brown;
+	height: 200px;
+}
+
+#main_soc_block_in {
+	padding: 1%;
+	text-align: center;
+	max-width: 98%;
+	height: 200px;
+}
+
+
+/* Styles for form */
+form {
+	width: 60%;
+	margin-left: 20%;
+	float: left;
+	margin-top: 30px;
+}
+
+.field {
+	border-radius: 7px;
+	border: 2px solid silver;
+	padding: 5px;
+	clear: both;
+	float: left;
+	width: 40%;
+}
+
+.field:focus {
+	border: 2px solid red;
+}
+
+form label {
+	margin-top: 10px;
+	width: 100%;
+	float: left;
+}
+
+form textarea {
+	width: 60%;
+	clear: both;
+	float: left;
+	border-radius: 10px;
+	border: 2px solid silver;
+	height: 150px;
+	padding: 10px;
+}
+
+form textarea:focus {
+	border: 2px solid red;
+}
+
+form #send {
+	padding: 5px;
+	border-radius: 5px;
+	width: 30%;
+	font-size: 1.1em;
+	background-color: silver;
+	border: 1px solid silver;
+	float: left;
+	clear: both;
+	margin-top: 15px;
+}
+
+form #send:hover {
+	background-color: red;
+	border: 1px solid black;
+}
+
+@media (max-width: 699px) {
+#pages {
+	clear: both;
+	width: 65%;
+	background-color: #969696;
+	border-radius: 5px;
+	min-height: 35px;
+	padding: 5px;
+	margin-top: 10px;
+}}
+
+@media (max-width: 899px) and (min-width: 700px){
+	#pages {
+	clear: both;
+	width: 40%;
+	background-color: #969696;
+	border-radius: 5px;
+	min-height: 35px;
+	padding: 5px;
+	margin-top: 10px;
+}
+}
+
+@media (min-width: 900px) {
+	#pages {
+	clear: both;
+	width: 20%;
+	background-color: #969696;
+	border-radius: 5px;
+	min-height: 35px;
+	padding: 5px;
+	margin-top: 10px;
+}
+}
+
+#pages a {
+	margin: 10px;
+}
+
+center h2 {
+	width: 80%;
+	margin-top: 20px;
+}
+
+/* Styles for comments */
+#comment {
+	width: 70%;
+	margin-left: 20%;
+	margin-top: 35px;
+	padding: 10px;
+	height: auto;
+}
+
+#comment_add {
+	float: left;
+}
+
+#comment_add img {
+	float: left;
+	clear: both;
+	margin-top: 15px;
+	width: 200px;
+	height: 130px;
+	margin-bottom: 15px;
+}
+
+#comment_add p {
+	font-size: 1.2em;
+	margin-bottom: 5px;
+}
+
+#comment_add input {
+	border: 2px solid silver;
+	border-radius: 5px;
+	margin-bottom: 15px;
+	width: 100%;
+	padding: 2px;
+}
+
+#comment_add input:focus {
+	border: 2px solid red;
+}
+
+#comment_add input[type=submit] {
+	font-size: 1.1em;
+	padding: 5px;
+}
+
+#comment_add input[type=submit]:hover {
+	background-color: red;
+	color: white;
+}
+
+#comment_add form {
+	width: 80%;
+	margin-left: 5%;
+}
+
+#comment_add textarea {
+	margin-bottom: 15px;
+	width: 300px;
+}
+
+#comments {
+	float: left;
+	clear: both;
+	margin-top: 30px;
+	width: 60%;
+}
+
+#comments .user_comment {
+	float: left;
+	clear: both;
+	margin-left: 15px;
+	margin-top: 10px;
+}
+
+#comments .user_comment .user_img {
+	float: left;
+	width: 64px;
+	height: 64px;
+	display: block;
+}
+
+#comments .user_comment .user_comment_in {
+	float: left;
+	margin-left: 10px;
+	width: 550px;
+}
+
+#comments .user_comment .user_comment_in .username {
+	font-size: 1.3em;
+	color: red;
+	font: bold;
+	float: left;
+}
+
+#comments .user_comment .user_comment_in .datetime {
+	font-size: 0.9em;
+	margin-left: 5px;
+	color: #383838;
+	float: left;
+}
+
+#comments .user_comment .user_comment_in .comment_text {
+	float: left;
+	clear: both;
+	display: block;
+}
+
+#comments .user_comment .comment_del_and_change {
+	float: left;
+	margin-left: 10px;
+}
+
+#comments .user_comment .comment_del_and_change #comment_delete_form {
+	float: left;
+}
+
+#comments .user_comment .comment_del_and_change #comment_delete_form #comment_delete {
+	border: none;
+	background-color: white;
+	padding: 2px;
+}
+
+#comments .user_comment .comment_del_and_change #comment_delete_form #comment_delete:hover {
+	border: none;
+	background-color: white;
+	color: red;
+	border-bottom: 1px solid red;
+	padding: 2px;
+}
+
+#comments .user_comment .comment_del_and_change #comment_change {
+	margin-top: 10px;
+	float: left;
+	margin-left: 15px;
+}
+
+#comments .user_comment .comment_del_and_change img {
+	width: 20px;
+	height: 20px;
+}
+
+#comment_change_page {
+	float: left;
+	width: 60%;
+	margin-left: 2%;
+	padding: 10px;
+	background-color: #f7f7f7;
+	border-radius: 15px;
+	margin-top: 35px;
+	min-height: 500px;
+}
+
+#comment_change_page #old_comment {
+	float: left;
+	clear: both;
+}
+
+#comment_change_page #old_comment p {
+	float: left;
+	clear: both;
+	margin-left: 15px;
+	margin-bottom: 10px;
+	font-size: 1.1em;
+}
+
+#comment_change_page #old_comment span {
+	float: left;
+	clear: both;
+	margin-left: 20px;
+	margin-bottom: 10px;
+}
+
+#comment_change_page #old_comment h2 {
+	margin-bottom: 15px;
+}
+
+#comment_change_page h2 {
+	margin-left: 10px;
+	margin-top: 10px;
+	color: red;
+	float: left;
+	clear: both;
+}
+
+#comment_change_form {
+	float: left;
+	margin-left: 15px;
+	clear: both;
+}
+
+#comment_change_form input[type=submit] {
+	float: left;
+	margin-top: 25px;
+	font-size: 1.1em;
+	padding: 5px;
+	border-radius: 7px;
+	clear: both;
+	margin-left: 15px;
+}
+
+#comment_change_form input[type=submit]:hover {
+	color: white;
+	background-color: red;
+	border: 1px solid red;
+}
+
+#comment_change_form input {
+	border: 1px solid silver;
+	padding: 5px;
+	margin-left: 15px;
+}
+
+#comment_change_form input:focus {
+	border: 1px solid red;
+}
+
+#comment_change_form textarea {
+	margin-left: 15px;
+}
+
+#comment_change_form label {
+	float: left;
+	margin-bottom: 10px;
+	clear: both;
+	margin-left: 15px;
+	font-size: 1.1em;
+}
+
+/* Styles for login_page and register_page */
+#login_page, #register_page {
+	float: left;
+	width: 60%;
+	margin-left: 2%;
+	padding: 10px;
+	background-color: #f7f7f7;
+	border-radius: 15px;
+	margin-top: 35px;
+	min-height: 500px;
+}
+
+#simle_login, #simle_reg {
+	float: left;
+	width: 50%;
+}
+
+#simle_login a {
+	float: left;
+	clear: both;
+	color: red;
+	margin-left: 35px;
+	padding: 2px;
+	border-bottom: 2px solid #f7f7f7;
+}
+
+#simle_login a:hover {
+	border-bottom: 2px solid red;
+}
+
+#login_page form, #register_page form {
+	margin-top: 20px;
+	width: 100%;
+	float: left;
+	clear: both;
+	margin-left: 35px;
+}
+
+#login_page h2, #register_page h2 {
+	color: red;
+	font-size: 1.5em;
+	float: left;
+	margin-left: 20px;
+	clear: both;
+}
+
+#login_page input {
+	border: 2px solid silver;
+	border-radius: 5px;
+	margin-bottom: 15px;
+	width: 30%;
+	padding: 2px;
+	
+}
+
+#register_page input {
+	border: 2px solid silver;
+	border-radius: 5px;
+	width: 30%;
+	padding: 2px;
+	clear: both;
+	float: left;
+}
+
+#login_page p, #login_page input {
+	float: left;
+	clear: both;
+}
+
+#register_page .label {
+	float: left;
+	clear: both;
+}
+
+#register_page .helptext {
+	float: left;
+	clear: both;
+	margin-top: 5px;
+	margin-bottom: 15px;
+	width: 100%;
+	margin-left: 10px;
+	display: block;
+}
+
+#register_page  ul {
+	float: left;
+	width: 100%;
+	clear: both;
+	margin-left: 10px;
+}
+
+#register_page  ul li {
+	float: left;
+	clear: both;
+}
+
+#register_page #password_inspect {
+	float: left;
+	clear: both;
+	width: 30%;
+	margin-left: 10px;
+	margin-bottom: 10px;
+	padding: 5px;
+}
+
+#login_page input:focus, #register_page input:focus {
+	border: 2px solid red;
+}
+
+#login_page input[type=submit] {
+	font-size: 1.1em;
+	padding: 5px;
+	float: left;
+	clear: both;
+}
+
+#register_page input[type=submit] {
+	font-size: 1.1em;
+	padding: 5px;
+	float: left;
+	clear: both;
+	width: 225px;
+}
+
+#register_page input[type=checkbox] {
+	float: left;
+	clear: both;
+	margin-left: -60px;
+}
+
+#login_page input[type=submit]:hover, #register_page input[type=submit]:hover {
+	background-color: red;
+	color: white;
+}
+
+#login_soc, #reg_soc {
+	float: right;
+	margin-top: 20px;
+	margin-right: 35px;
+}
+
+#login_soc #facebook_login, #google_login, #facebook_reg, #google_reg {
+	padding: 7px;
+	border-radius: 5px;
+	margin-top: 10px;
+	float: right;
+	clear: both;
+	margin-right: 15px;
+}
+
+#login_soc #facebook_login, #facebook_reg {
+	background-color: #0C26BD;
+}
+
+#login_soc #facebook_login:hover, #facebook_reg:hover {
+	background-color: #1216E7;
+}
+
+#login_soc #facebook_login a, #facebook_reg a {
+	display: block;
+	color: white;
+	font-size: 1.2em;
+}
+
+#login_soc #google_login, #google_reg {
+	background-color: #0288D3;
+}
+
+#login_soc #google_login:hover, #google_reg:hover {
+	background-color: #15A7DB;
+}
+
+#login_soc #google_login a, #google_reg a {
+	display: block;
+	color: white;
+	font-size: 1.2em;
+}
+
+/* Styles for profile_page */
+#profile_page {
+	float: left;
+	width: 60%;
+	margin-left: 2%;
+	padding: 10px;
+	background-color: #f7f7f7;
+	border-radius: 15px;
+	margin-top: 35px;
+	min-height: 500px;
+}
+
+#profile_page hr {
+	border: 1px dashed;
+	margin-top: 5px;
+}
+
+#profile_page #user_date, #user_settings, #user_bbs{
+	width: 100%;
+	float: left;
+	clear: both;
+}
+
+#profile_page #user_date h2, #user_settings h2, #user_bbs h2 {
+	color: red;
+	margin-bottom: 10px;
+}
+
+#profile_page #user_date p {
+	font-size: 1.1em;
+	margin-left: 25px;
+	margin-bottom: 5px;
+	border-bottom: 1px solid silver;
+	width: 20%;
+}
+
+#profile_page #user_settings .setting, #user_bbs .setting{
+	float: left;
+	clear: both;
+	margin-bottom: 10px;
+	margin-left: 25px;
+	background-color: silver;
+	border-radius: 5px;
+	padding: 7px;
+}
+
+#profile_page #user_settings .setting:hover, #user_bbs .setting:hover {
+	background-color: red;
+}
+
+#profile_page #user_settings .setting a, #user_bbs .setting a {
+	font-size: 1.1em;
+	color: white;
+}
+
+#profile_page #user_bbs .user_bb {
+	float: left;
+	clear: both;
+	margin-left: 25px;
+	margin-top: 20px;
+	padding-left: 8px;
+	border-left: 2px solid red;
+}
+
+#profile_page #user_bbs .user_bb .bb_img {
+	float: left;
+}
+
+#profile_page #user_bbs .user_bb .bb_in {
+	float: left;
+	margin-left: 15px;
+}
+
+#profile_page #user_bbs .user_bb .bb_in a {
+	float: left;
+	clear: both;
+	font-size: 1.1em;
+	color: black;
+	border-bottom: 2px solid silver;
+}
+
+#profile_page #user_bbs .user_bb .bb_in a:hover {
+	color: #545454;
+	border-bottom: 2px solid red;
+}
+
+#profile_page #user_bbs .user_bb .bb_img img {
+	width: 100px;
+	height: 70px;
+}
+
+/* Styles for logout_page */
+#logout_page {
+	float: left;
+	width: 60%;
+	margin-left: 2%;
+	padding: 10px;
+	background-color: #f7f7f7;
+	border-radius: 15px;
+	margin-top: 35px;
+	min-height: 500px;
+}
+
+#logout_page h2 {
+	color: red;
+	float: left;
+	margin-top: 10px;
+	margin-left: 25px;
+}
+
+/* Styles for profile_bb_add_page, profile_bb_change_page */
+#profile_bb_add_page, #profile_bb_change_page {
+	float: left;
+	width: 60%;
+	margin-left: 2%;
+	padding: 10px;
+	background-color: #f7f7f7;
+	border-radius: 15px;
+	margin-top: 35px;
+	min-height: 500px;
+}
+
+#profile_bb_add_page #page_title, #profile_bb_change_page #page_title {
+	color: red;
+	margin-left: 15px;
+	float: left;
+	clear: both;
+}
+
+#profile_bb_add_form, #profile_bb_change_form {
+	float: left;
+	margin-top: 10px;
+	clear: both;
+}
+
+#profile_bb_add_form form, #profile_bb_change_form form {
+	width: 100%;
+	float: left;
+}
+
+#profile_bb_add_form label, #profile_bb_change_form label {
+	float: left;
+	clear: both;
+	font-size: 1.1em;
+	margin-bottom: 5px;
+}
+
+#profile_bb_add_form input[type=file], #profile_bb_change_form input[type=file] {
+	float: left;
+	clear: both;
+	width: 65%;
+	border: 1px solid #f7f7f7;
+}
+
+#profile_bb_add_form input[type=checkbox], #profile_bb_change_form input[type=checkbox] {
+	margin-left: -105px;
+}
+
+#profile_bb_add_form input, #profile_bb_change_form input {
+	float: left;
+	clear: both;
+	width: 100%;
+	border: 2px solid silver;
+	border-radius: 5px;
+	padding: 2px;
+	margin-left: 10px;
+}
+
+#profile_bb_add_form input:focus, #profile_bb_change_form input:focus {
+	border: 2px solid red;
+}
+
+#profile_bb_add_form select, #profile_bb_change_form select {
+	float: left;
+	clear: both;
+	width: 100%;
+	border: 2px solid silver;
+	border-radius: 5px;
+	padding: 2px;
+	margin-left: 10px;
+}
+
+#profile_bb_add_form textarea, #profile_bb_change_form textarea {
+	float: left;
+	clear: both;
+	width: 100%;
+	border: 2px solid silver;
+	border-radius: 5px;
+	padding: 2px;
+	margin-left: 10px;
+}
+
+#profile_bb_add_form textarea:focus, #profile_bb_change_form textarea:focus {
+	border: 2px solid red;
+}
+
+#profile_bb_add_form input[type=submit], #profile_bb_change_form input[type=submit] {
+	margin-top: 45px;
+	font-size: 1.1em;
+	padding: 5px;
+}
+
+#profile_bb_add_form input[type=submit]:hover, #profile_bb_change_form input[type=submit]:hover {
+	background-color: red;
+	color: white;
+}
+
+#profile_bb_change_form input[type=file] {
+	float: none;
+}
+
+#profile_bb_change_form input[type=checkbox] {
+	float: left;
+	margin-top: 5px;
+	clear: both;
+}
+
+#profile_bb_change_form .formset_field {
+	float: left;
+	clear: both;
+	margin-left: 15px;
+	margin-top: 15px;
+	padding: 5px;
+	border-left: 2px solid red;
+}
+
+#profile_bb_change_form .formset_field input[type=checkbox] {
+	float: left;
+	margin-left: 5px;
+}
+
+#profile_bb_change_form .formset_field input[type=file] {
+	float: none;
+	margin-top: 5px;
+}
+
+/* Styles for profile_bb_delete_page */
+#profile_bb_delete_page {
+	float: left;
+	width: 60%;
+	margin-left: 2%;
+	padding: 10px;
+	background-color: #f7f7f7;
+	border-radius: 15px;
+	margin-top: 35px;
+	min-height: 500px;
+}
+
+#profile_bb_delete_page h2 {
+	float: left;
+	color: red;
+	margin-left: 20px;
+	clear: both;
+}
+
+#profile_bb_delete_page #profile_bb_delete_form {
+	float: left;
+	clear: both;
+}
+
+#profile_bb_delete_page #profile_bb_delete_form input {
+	float: left;
+	margin-top: 5px;
+	font-size: 1.1em;
+	padding: 5px;
+	border-radius: 7px;
+}
+
+#profile_bb_delete_page #profile_bb_delete_form input[type=submit]:hover {
+	background-color: red;
+	color: white;
+}
+
+/* Styles for change_user_info_page, delete_user_page */
+#change_user_info_page, #delete_user_page {
+	float: left;
+	width: 60%;
+	margin-left: 2%;
+	padding: 10px;
+	background-color: #f7f7f7;
+	border-radius: 15px;
+	margin-top: 35px;
+	min-height: 500px;
+}
+
+#change_user_info_page h2, #delete_user_page h2 {
+	float: left;
+	color: red;
+	margin-left: 20px;
+	clear: both;
+}
+
+#change_user_info_page #change_user_info_form, #delete_user_form {
+	float: left;
+	clear: both;
+}
+
+#change_user_info_page #change_user_info_form form {
+	float: left;
+	clear: both;
+}
+
+#change_user_info_form label {
+	float: left;
+	clear: both;
+	font-size: 1.1em;
+	margin-top: 15px;
+}
+
+#change_user_info_form input, #delete_user_form input {
+	float: left;
+	clear: both;
+	margin-top: 5px;
+	padding: 4px;
+	border: 2px solid silver;
+	border-radius: 5px;
+	width: 50%;
+}
+
+#change_user_info_form input:focus {
+	border: 2px solid red;
+}
+
+#change_user_info_form span {
+	float: left;
+	margin-top: 5px;
+}
+
+#change_user_info_form input[type=submit], #delete_user_form input[type=submit] {
+	float: left;
+	margin-top: 25px;
+	font-size: 1.1em;
+	padding: 5px;
+	border-radius: 7px;
+}
+
+#change_user_info_form input[type=submit]:hover, #delete_user_form input[type=submit]:hover  {
+	background-color: red;
+	color: white;
+}
+
+#change_user_info_form input[type=checkbox] {
+	float: left;
+	clear: none;
+}
+
+#change_user_info_form input[type=file] {
+	float: left;
+	clear: both;
+	border: none;
+}
+
+/* Styles for password_reset_page, register_done_page, user_is_activated_page, activation_done_page, bad_signature_page */
+#password_reset_page, #register_done_page, #user_is_activated_page, #activation_done_page, #bad_signature_page {
+	float: left;
+	width: 60%;
+	margin-left: 2%;
+	padding: 10px;
+	background-color: #f7f7f7;
+	border-radius: 15px;
+	margin-top: 35px;
+	min-height: 500px;
+}
+
+#password_reset_page h2, #register_done_page h2, #user_is_activated_page h2, #activation_done_page h2, #bad_signature_page h2 {
+	float: left;
+	clear: both;
+	margin-left: 15px;
+	color: red;
+}
+
+#register_done_page p, #user_is_activated_page p, #activation_done_page p, #bad_signature_page p {
+	float: left;
+	clear: both;
+	margin-left: 35px;
+	font-size: 1.1em;
+	
+}
+
+#password_reset_form {
+	float: left;
+	clear: both;
+	width: 100%;
+	margin-left: 35px;
+}
+
+#password_reset_form label {
+	float: left;
+	clear: both;
+	font-size: 1.1em;
+	margin-top: 20px;
+}
+
+#password_reset_form input {
+	float: left;
+	clear: both;
+	margin-top: 10px;
+	border: 2px solid silver;
+	padding: 5px;
+	border-radius: 5px;
+	width: 25%;
+}
+
+#password_reset_form input:focus {
+	border: 2px solid red;
+}
+
+#password_reset_form input[type=submit] {
+	width: 40%;
+	font-size: 1.1em;
+	margin-top: 45px;
+}
+
+#password_reset_form input[type=submit]:hover {
+	background-color: red;
+	color: white;
+}
+
+#password_reset_form span {
+	float: left;
+	clear: both;
+	margin-top: 5px;
+	margin-left: 25px;
+}

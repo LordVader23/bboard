@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8' content="text/html"/>
+	<title>{% block title %}Главная{% endblock %} - Доска объявлений</title>
+	<link href="{% static 'main_css/c1.css' %}" rel='stylesheet' content="text/css"/>
+	<meta name="Keywords" content="test, site, website"/>
+	<meta name="Description" content="Something text"/>
+	<link href="#" rel="shortcut icon" type="image/x-icon"/>
+</head>
+<body>
+	<div id="page_wrap">
+	<header>
+		<a id="main_title" href="{% url 'main:index' %}" title="Main page">Test site</a>
+		{% if user.is_authenticated %}
+		<a href="{% url 'main:profile' %}" id="profile" title="Профиль">Профиль</a>
+		<a href="{% url 'main:logout' %}" id="auth" title="Выйти">Выход</a>
+		{% else %}
+		<a href="{% url 'main:register' %}" id="reg" title="Зарегистрироваться">Регистрация</a>
+		<a href="{% url 'main:login' %}" id="auth" title="Войти">Вход</a>
+		{% endif %}
+
+	</header>
+		<div class="clear"><br></div>
+		<center>
+			<div id="menu"><h2>Разделы</h2><hr></div>
+			<div id="menuhreves">
+				<a href="{% url 'main:other' page='about' %}" title="О нас">О нас</a>
+				<a href="" title="Список рубрик">Рубрики</a>
+				<a href="feedback.html" title="Обратная связь">Обратная связь</a>
+			</div>
+			
+		</center>
+		<div id="wrapper">
+			<aside>
+				<p><h2>Рубрики</h2></p>
+				{% for rubric in rubrics %}
+						<div class="sidebar_block">
+							<a href="{% url 'main:by_rubric' pk=rubric.pk%}">
+								{% if rubric.image %}
+									<img src="{{ rubric.image.url }}" class="sidebar_img" alt="house">
+								{% else %}	
+									<img src="{% static 'main/empty.jpg' %}" class="sidebar_img" alt="house">
+								{% endif %}
+								
+							<p class="sidebar_p">{{ rubric.name }}</p>
+							</a>
+						</div>
+				{% endfor %}
+			</aside>
+			
+			{% block content %}
+			{% endblock %}
+<!--
+			<div id="main_soc_block">
+				<div id="main_soc_block_in">
+					Lorem ipsum dorem
+				
+				</div>
+			
+			</div>
+-->
+		</div>
+		
+	</div>
+	
+	<footer>
+		<p class="left">Все права защищены &copy; 2019</p>
+		<a href="#" title="VK"><img src="{% static 'main/VK.png' %}" class="social" alt="VK"/></a>
+		
+		
+	</footer>
+</body>
+</html>

@@ -1,0 +1,130 @@
+{% extends "layout/basic.html" %}
+
+{% load bootstrap4 %}
+{% load static %}
+
+{% block title %}{{ bb.title }} - {{ bb.rubric.name }}{% endblock %}
+
+{% block content %}
+<div id="detail">
+	<center><h1>{{ bb.title }}</h1></center>
+	<div id="datetime"><p>Время публикации: {{ bb.created_at }}</p></div>
+	{% if bb.image %}
+	<img src="{{ bb.image.url }}" class="detail_img">
+	{% else %}
+	<img src="{% static 'main/empty.jpg' %}" class="detail_img">
+	{% endif %}
+	
+	<div id="price">
+		<h2>Цена: {{ bb.price }} usd</h2>
+	</div>
+	
+	<div class="text">
+		<p>{{ bb.content }}</p>
+	</div>
+
+<!--	
+	{% if ais %}
+	<div class="d=flex justify-content-between flex-wrap mt-5">
+		{% for ai in ais %}
+		<div>
+			<img class="additional-image" src="{{ ai.image.url }}">
+		</div>
+		{% endfor %}
+	</div>
+	{% endif %}
+-->
+	<p id="back"><a href="{% url 'main:by_rubric' pk=bb.rubric.pk %}{{ all }}">Назад</a></p>
+	
+</div>
+
+<div id="comment">
+				<div id="comment_add">
+				{% if user.is_authenticated %}
+					<h3>Добавить комментарий</h3>
+					<form method="post" accept-charset="utf-8">
+						{% csrf_token %}
+						{% for hidden in form.hidden_fields %}
+							{{ hidden }}
+						{% endfor %}
+						{% for field in form.visible_fields %}
+							{{ field.label_tag }}
+							{{ field }}
+							{{ field.help_text }}
+						{% endfor %}	
+						<!--	
+						<p>Автор</p>
+						<input>
+						<p>Содержание</p>
+						<textarea>Содержание</textarea>
+						-->
+						<input type="submit" value="Добавить">
+					</form>
+				{% else %}
+					<p> Комментарии могут добавлять только зарегистрированые пользователи</p>
+				{% endif %}
+				</div>
+				
+				
+				<div id="comments">
+					<h3>Комментарии</h3>
+					{% if comments %}
+						{% for comment in comments %}
+							<div class="user_comment">
+							
+							{% if comment.author.user_image %}
+								<img class="user_img" alt="user_img" src="{{ comment.author.user_image.url }}">
+							{% else %}
+								<img class="user_img" alt="user_img" src="">
+							{% endif %}
+							
+							<!--<img class="user_img" alt="user_img" src="">-->
+								<div class="user_comment_in">
+									<span class="username">{{ comment.author }}</span>
+									<span class="datetime">{{ comment.created_at }}</span>
+									<span class="comment_text">{{ comment.content }}</span>	
+								</div>
+								{% if user == comment.author %}
+									<div class="comment_del_and_change">
+										<form method="post" id="comment_delete_form">
+											<input type="hidden" value="{{ comment.pk }}" name="comment_id">
+											{% csrf_token %}
+											<input type="submit" value="Удалить" name="delete" id="comment_delete">
+										</form>
+										<a href="{% url 'main:comment_change' comment_id=comment.pk %}" 
+											id="comment_change">
+											<img src="{% static 'main/comment_change.ico' %}" alt="change" title="change comment">
+										</a>
+									</div>
+								{% endif %}
+							</div>
+						{% endfor %}
+					{% else %}
+						<p>Комментарии еще не были добавлены</p>
+					{% endif %}
+				</div>
+				
+</div>
+
+
+
+<!--
+<h4 class="mt-5">Новый комментарий</h4>
+<form method="post">
+	{% csrf_token %}
+	{% bootstrap_form form layout='horizontal' %}
+	{% buttons submit='Добавить' %}{% endbuttons %}
+</form>
+{% if comments %}
+<div class="mt-5">
+	{% for comment in comments %}
+	<div class="my-2 p-2 border">
+		<h5>{{ comment.author }}</h5>
+		<p>{{ comment.content }}</p>
+		<p class="text-right font-italic">{{ comment.created_at }}</p>
+	</div>
+	{% endfor %}
+</div>
+{% endif %}
+-->
+{% endblock %}

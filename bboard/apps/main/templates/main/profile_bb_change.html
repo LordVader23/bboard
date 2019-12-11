@@ -1,0 +1,46 @@
+{% extends "layout/basic.html" %}
+
+{% load bootstrap4 %}
+
+{% block title %}Изменение объявления - профиль пользователя{% endblock %}
+
+{% block content %}
+
+<div id="profile_bb_change_page">
+	<div id="page_title">
+		<h2>Изменение объявления</h2>
+	</div>
+
+	<div id="profile_bb_change_form">
+		<form method="post" enctype="multipart/form-data">
+			{% csrf_token %}
+			
+			{% for hidden in form.hidden_fields %}
+				{{ hidden }}
+			{% endfor %}
+			{% for field in form.visible_fields %}
+				{{ field.label_tag }}
+				{{ field }}
+				{{ field.help_text }}
+			{% endfor %}
+			
+			{{ formset.management_form }}
+				{% for form in formset %}
+					{% for hidden in form.hidden_fields %}
+						{{ hidden }}
+					{% endfor %}
+					{% for field in form.visible_fields %}
+						<div class="formset_field">
+							{{ field.label_tag }}
+							{{ field }}
+							{{ field.help_text }}
+						</div>
+					{% endfor %}
+				{% endfor %}
+			
+			<input type="submit" value="Изменить">
+			
+		</form>	
+	</div>
+</div>
+{% endblock %}

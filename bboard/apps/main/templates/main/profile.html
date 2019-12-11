@@ -1,0 +1,83 @@
+{% extends "layout/basic.html" %}
+
+{% block title %}Профиль пользователя{% endblock %}
+
+{% block content %}
+
+<div id="profile_page">
+				<div id="user_date">
+					<h2>Данные пользователя</h2>
+					<p>Логин: {{ user.username }}</p>
+					{% if user.first_name %}
+						<p>Имя: {{ user.first_name }}</p>
+					{% elif user.last_name %}
+						<p>Фамилия: {{ user.last_name }}</p>
+					{% endif %}
+					
+					{% if user.send_messages %}
+						<p>Отправлять сообщения на эл. почту: ДА</p>
+					{% else %}
+						<p>Отправлять сообщения на эл. почту: НЕТ</p>
+					{% endif %}
+					
+				</div>
+				<hr>
+				<div id="user_settings">
+					<h2>Настройки аккаунта</h2>
+					<div class="setting">
+						<a href="{% url 'main:password_change' %}">Сменить пароль</a>
+					</div>
+					<div class="setting">
+						<a href="{% url 'main:profile_change' %}">Изменить данные пользователя</a>
+					</div>
+					<div class="setting">
+						<a href="{% url 'main:profile_delete' %}">Удалить аккаунт</a>
+					</div>
+				</div>
+				<hr>
+				<div id="user_bbs">
+					<h2>Ваши объявления</h2>
+					<div class="setting">
+						<a href="{% url 'main:profile_bb_add' %}">Добавить объявление</a>
+					</div>
+					
+					{% if bbs %}
+						{% for bb in bbs %}
+							<div class="user_bb">
+								<div class="bb_img">
+									<img src="{{ bb.image.url }}" alt="img">
+								</div>
+								<div class="bb_in">
+									<a href="{% url 'main:profile_bb_detail' pk=bb.pk %}">{{ bb.title }}</a>
+									<a href="{% url 'main:profile_bb_change' pk=bb.pk %}">Изменить объявление</a>
+									<a href="{% url 'main:profile_bb_delete' pk=bb.pk %}">Удалить объявление</a>
+								</div>
+							</div>
+						{% endfor %}
+					{% else %}
+						<p>У вас нет объявлений</p>
+					{% endif %}
+				</div>
+</div>
+
+<!--
+<h3>Ваши объявления</h3>
+<a href="{% url 'main:profile_change' %}">Изменить данные пользователя</a>
+<br>
+<a href="{% url 'main:profile_delete' %}">Удалить аккаунт</a>
+<br>
+<a href="{% url 'main:password_reset' %}">Сменить пароль</a>
+<br>
+<a href="{% url 'main:profile_bb_add' %}">Добавить объявление</a>
+<br>
+{% if bbs %}
+	<h3>Ваши объявления</h3>
+	{% for bb in bbs %}
+		<p><a href="{% url 'main:profile_bb_detail' pk=bb.pk %}">{{ bb.title }}</a></p>
+		<p><a href="{% url 'main:profile_bb_change' pk=bb.pk %}">Изменить объявление</a></p>
+		<p><a href="{% url 'main:profile_bb_delete' pk=bb.pk %}">Удалить объявление</a></p>
+		<br><br>
+	{% endfor %}
+{% endif %}
+-->
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "layout/basic.html" %}
+
+{% block title %}Правка личных данных{% endblock %}
+
+{% block content %}
+<div id="change_user_info_page">
+	<h2>Правка личных данных пользователя {{ user.username }}</h2>
+	<form id="change_user_info_form" method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+		
+		{% for hidden in form.hidden_fields %}
+			{{ hidden }}
+		{% endfor %}
+		{% for field in form.visible_fields %}
+			{{ field.label_tag }}
+			{{ field }}
+			{{ field.help_text }}
+		{% endfor %}
+		
+		<input type='submit' value="Сохранить">
+	</form>
+</div>
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends "layout/basic.html" %}
+
+{% load thumbnail %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block title %}{{ rubric }}{% endblock %}
+
+{% block searchform %}
+{% endblock %}
+
+{% block content %}
+
+<div id="articles">
+	<h2 id="rubric_name">{{ rubric }}</h2>
+	{% if bbs %}
+		{% url 'main:detail' rubric_pk=rubric.pk pk=bb.pk as url %}
+		{% for bb in bbs %}
+			<article>
+				{% if bb.image %}
+				<img src="{{ bb.image.url }}" alt="image">
+				{% elif bb.additionalimage_set.0 %}
+				<img src="{{ bb.additionalimage_set.0.image.url }}" alt="image">
+				{% else %}
+				<img src="{% static 'main/empty.jpg' %}" alt="image">
+				{% endif %}
+				<h2>{{ bb.title }}</h2>
+				<p>{{ bb.created_at }}</p>
+				<a href="{% url 'main:detail' rubric_pk=bb.rubric.pk pk=bb.pk %}" title="Подробнее">Подробнее</a>
+			</article>
+		{% endfor %}
+	{% else %}
+		<h2>Объявлений в этой рубрике еще нет</h2>
+	{% endif %}
+</div>
+
+<center>
+			<div id="pages">
+				{% if page.has_previous %}
+				<a href="?page={{ page.previous_page_number }}">&larr;</a>
+				{% endif %}
+				<a>№{{ page.number }}</a>
+				{% if page.has_next %}
+				<a href="?page={{ page.next_page_number }}">&rarr;</a>
+				{% endif %}
+			</div>
+</center>
+
+
+
+<!--
+	<h2 class="mb-2">{{ rubric }}</h2>
+	<div class="container-fluid mb-2">
+		<div class="row">
+			<div class="col">&nbsp;</div>
+			<form class="col-md-auto form-inline">
+				{% bootstrap_form form show_label=False %}
+				{% bootstrap_button content='Исткать' button_type='submit' %}
+			</form>
+		</div>
+	</div>
+{% if bbs %}
+<ul class="list-unstyled">
+	{% for bb in bbs %}
+	<li class="media my-5 p-3 border">
+		{% url 'main:detail' rubric_pk=rubric.pk pk=bb.pk as url %}
+		<a href="{{ url }}{{ all }}">
+			{% if bb.image %}
+			<img src="{% thumbnail bb.image 'default' %}" class="mr-3">
+			{% else %}
+			<img class="mr-3" src="{% static 'main/empty.jpg' %}">
+			{% endif %}
+		</a>
+		<div class="media-body">
+			<h3><a href="{{ url }}{{ all }}">{{ bb.title }}</a></h3>
+			<div>{{ bb.content }}</div>
+			<p class="text-right font-weight-bold">{{ bb.price }} дол. США</p>
+			<p class="text-right font-italic">{{ bb.created_at }}</p>
+		</div>
+	</li>
+	{% endfor %}
+</ul>
+{% bootstrap_pagination page url=keyword %}
+{% endif %}
+-->
+{% endblock %}

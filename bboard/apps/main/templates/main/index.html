@@ -1,0 +1,36 @@
+{% extends "layout/basic.html" %}
+
+{% load thumbnail %}
+{% load static %}
+
+{% block content %}
+	<div id="articles">
+		{% url 'main:detail' rubric_pk=rubric.pk pk=bb.pk as url %}
+		{% for bb in bbs %}
+			<article>
+				{% if bb.image %}
+				<img src="{{ bb.image.url }}" alt="image">
+				{% elif bb.additionalimage_set.0 %}
+				<img src="{{ bb.additionalimage_set.0.image.url }}" alt="image">
+				{% else %}
+				<img src="{% static 'main/empty.jpg' %}" alt="image">
+				{% endif %}
+				<h2>{{ bb.title }}</h2>
+				<p>{{ bb.created_at }}</p>
+				<a href="{% url 'main:detail' rubric_pk=bb.rubric.pk pk=bb.pk %}" title="Подробнее">Подробнее</a>
+			</article>
+		{% endfor %}
+	</div>
+
+	<center>
+				<div id="pages">
+					{% if page.has_previous %}
+					<a href="?page={{ page.previous_page_number }}">&larr;</a>
+					{% endif %}
+					<a>№{{ page.number }}</a>
+					{% if page.has_next %}
+					<a href="?page={{ page.next_page_number }}">&rarr;</a>
+					{% endif %}
+				</div>
+	</center>
+{% endblock %}

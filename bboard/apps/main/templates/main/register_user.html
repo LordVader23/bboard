@@ -1,0 +1,44 @@
+{% extends "layout/basic.html" %}
+
+{% block title %}Регистрация{% endblock %}
+
+{% block content %}
+
+<div id="register_page">
+				<div id="simle_reg">
+					<h2>Регистрация</h2>
+					<form method="post">
+						{% csrf_token %}
+						{% for hidden in form.hidden_fields %}
+							{{ hidden }}
+						{% endfor %}
+						{% for field in form.visible_fields %}
+							<p class="label">{{ field.label_tag }}</p>
+							{{ field }}
+							<span class="helptext">{{ field.help_text }}</span>
+						{% endfor %}
+
+						<input type="submit" value="Зарегистрироваться">
+					</form>
+				</div>
+				
+				<div id="reg_soc">
+					<h2>Или с помощью</h2>
+					<div id="facebook_reg">
+						<a href="#">Facebook</a>
+					</div>
+					
+					<div id="google_reg">
+						<a href="#">Google</a>
+					</div>
+				</div>
+</div>
+
+<!--
+<form method="post">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<input type="submit" name="submit">
+</form>
+-->
+{% endblock %}

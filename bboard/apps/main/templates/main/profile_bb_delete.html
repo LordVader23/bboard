@@ -1,0 +1,16 @@
+{% extends "layout/basic.html" %}
+
+{% load bootstrap4 %}
+
+{% block title %}Удаление объявления - профиль пользователя{% endblock %}
+
+{% block content %}
+<div id="profile_bb_delete_page">
+	<h2>Вы действительно хотите удалить объявление <a href="{% url 'main:detail' rubric_pk=bb.rubric.pk pk=bb.pk %}">
+{{ bb.title }}</a></h2>
+	<form id="profile_bb_delete_form" method="post">
+		{% csrf_token %}
+	<input type="submit" value="Удалить">
+	</form>
+</div>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "layout/basic.html" %}
+
+{% load bootstrap4 %}
+
+{% block title %}Добавление объявления - профиль пользователя{% endblock %}
+
+{% block content %}
+
+<div id="profile_bb_add_page">
+	<div id="page_title">
+		<h2>Добавление объявления</h2>
+	</div>
+
+	<div id="profile_bb_add_form">
+		<form method="post" enctype="multipart/form-data">
+			{% csrf_token %}
+			
+			{% for hidden in form.hidden_fields %}
+				{{ hidden }}
+			{% endfor %}
+			{% for field in form.visible_fields %}
+				{{ field.label_tag }}
+				{{ field }}
+				{{ field.help_text }}
+			{% endfor %}
+			
+			{{ formset.management_form }}
+				{% for form in formset %}
+					{% for hidden in form.hidden_fields %}
+						{{ hidden }}
+					{% endfor %}
+					{% for field in form.visible_fields %}
+						{{ field.label_tag }}
+						{{ field }}
+						{{ field.help_text }}
+					{% endfor %}
+				{% endfor %}
+			
+			<input type="submit" value="Добавить">
+			
+		</form>	
+	</div>
+</div>
+
+<!--
+<form method="post" enctype="multipart/form-data">
+	{% csrf_token %}
+	{{ form.as_p }}
+	{{ formset.as_p }}
+	<input type="submit" value="Добавить">
+</form>
+-->
+{% endblock %}

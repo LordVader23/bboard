@@ -1,0 +1,49 @@
+{% extends "layout/basic.html" %}
+
+{% block title %}Вход{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<p>Вы уже выполнили вход</p>
+{% else %}
+
+<div id="login_page">		
+	<div id="simle_login">
+		<h2>Вход</h2>
+		<form method="post">
+			{% csrf_token %}
+			{% for hidden in form.hidden_fields %}
+				{{ hidden }}
+			{% endfor %}
+			{% for field in form.visible_fields %}
+				{{ field.label_tag }}
+				{{ field }}
+				{{ field.help_text }}
+			{% endfor %}
+			<input type="submit" value="Войти">
+		</form>
+		<p><a href="{% url 'main:password_reset' %}">Забыли пароль?</a>
+	</div>
+	
+	<div id="login_soc">
+		<h2>Или войдите с помощью</h2>
+			<div id="facebook_login">
+				<a href="#">Facebook</a>
+			</div>
+		
+			<div id="google_login">
+				<a href="#">Google</a>
+			</div>
+	</div>		
+</div>
+
+<!--
+<form method="post">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<input type="hidden" name="next" value="{{ next }}">
+	<input type="submit" value="Войти">
+</form>
+-->
+{% endif %}
+{% endblock %}

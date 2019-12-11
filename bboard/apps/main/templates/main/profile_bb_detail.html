@@ -1,0 +1,82 @@
+{% extends "layout/basic.html" %}
+
+{% load bootstrap4 %}
+{% load static %}
+
+{% block title %}{{ bb.title }} - {{ bb.rubric.name }}{% endblock %}
+
+{% block content %}
+<div id="detail">
+	<center><h1>{{ bb.title }}</h1></center>
+	<div id="datetime"><p>Время публикации: {{ bb.created_at }}</p></div>
+	{% if bb.image %}
+	<img src="{{ bb.image.url }}" class="detail_img">
+	{% else %}
+	<img src="{% static 'main/empty.jpg' %}" class="detail_img" alt="Нет изображения">
+	{% endif %}
+	
+	<div id="price">
+		<h2>Цена: {{ bb.price }} usd</h2>
+	</div>
+	
+	<div class="text">
+		<p>{{ bb.content }}</p>
+	</div>
+
+<!--	
+	{% if ais %}
+	<div class="d=flex justify-content-between flex-wrap mt-5">
+		{% for ai in ais %}
+		<div>
+			<img class="additional-image" src="{{ ai.image.url }}">
+		</div>
+		{% endfor %}
+	</div>
+	{% endif %}
+-->
+	<p id="back"><a href="{% url 'main:by_rubric' pk=bb.rubric.pk %}{{ all }}">Назад</a></p>
+	
+</div>
+
+<div id="comment">
+	<div id="comments">
+		<h3>Комментарии</h3>
+		{% if comments %}
+			{% for comment in comments %}
+				<div class="user_comment">
+					<img class="user_img" alt="user_img" src="#">
+					<div class="user_comment_in">
+						<span class="username">{{ comment.author }}</span>
+						<span class="datetime">{{ comment.created_at }}</span>
+						<span class="comment_text">{{ comment.content }}</span>					
+					</div>
+				</div>
+			{% endfor %}
+		{% else %}
+			<p>Комментарии еще не были добавлены</p>
+		{% endif %}
+	</div>
+</div>
+
+
+
+<!--
+<h4 class="mt-5">Новый комментарий</h4>
+<form method="post">
+	{% csrf_token %}
+	{% bootstrap_form form layout='horizontal' %}
+	{% buttons submit='Добавить' %}{% endbuttons %}
+</form>
+{% if comments %}
+<div class="mt-5">
+	{% for comment in comments %}
+	<div class="my-2 p-2 border">
+		<h5>{{ comment.author }}</h5>
+		<p>{{ comment.content }}</p>
+		<p class="text-right font-italic">{{ comment.created_at }}</p>
+	</div>
+	{% endfor %}
+</div>
+{% endif %}
+-->
+{% endblock %}
