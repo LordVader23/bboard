@@ -421,15 +421,43 @@ def comment_change(request, comment_id):
                 comment.save()
 
                 messages.add_message(request, messages.SUCCESS,
-                                        'Сообщение удалено!')
+                                        'Сообщение изменено!')
 
                 return redirect('main:index')
             else:
                 form = c_form
 
                 messages.add_message(request, messages.WARNING,
-                                     'Сообщение не удалено!')
+                                     'Сообщение не изменено!')
 
     context = {'form': form, 'comment': comment, }
 
     return render(request, 'main/comment_change.html', context)
+
+
+@login_required
+def comment_add_answer(request, comment_id):
+    comment = Comment.objects.get(pk=comment_id)
+    initial = {'bb': comment.bb, 'author': comment.author}
+    form = UserCommentForm(initial=initial)
+
+    if request.method == 'POST':
+        if request.user == comment.author:
+            c_form = UserCommentForm(request.POST)
+
+            if c_form.is_valid():
+                c_form.save()
+
+                messages.add_message(request, messages.SUCCESS,
+                                        'Сообщение добавлено!')
+
+                return redirect('main:index')
+            else:
+                form = c_form
+
+                messages.add_message(request, messages.WARNING,
+                                     'Сообщение не добавлено!')
+
+    context = {'form': form, }
+
+    return render(request, 'main/comment_add_answer.html', context)
