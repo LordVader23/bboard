@@ -604,40 +604,45 @@ center h2 {
 	margin-top: 10px;
 }
 
-#comments .user_comment .user_img {
+#comments .user_comment .user_img,
+.comment_answers .user_comment_answer .user_img {
 	float: left;
 	width: 64px;
 	height: 64px;
 	display: block;
 }
 
-#comments .user_comment .user_comment_in {
+#comments .user_comment .user_comment_in,
+.comment_answers .user_comment_answer .user_comment_in {
 	float: left;
 	margin-left: 10px;
 	width: 550px;
 }
 
-#comments .user_comment .user_comment_in .username {
+#comments .user_comment .user_comment_in .username,
+.comment_answers .user_comment_answer .user_comment_in .username {
 	font-size: 1.3em;
 	color: red;
 	font: bold;
 	float: left;
 }
 
-#comments .user_comment .user_comment_in .datetime {
+#comments .user_comment .user_comment_in .datetime,
+.comment_answers .user_comment_answer .user_comment_in .datetime {
 	font-size: 0.9em;
 	margin-left: 5px;
 	color: #383838;
 	float: left;
 }
 
-#comments .user_comment .user_comment_in .comment_text {
+#comments .user_comment .user_comment_in .comment_text,
+.comment_answers .user_comment_answer .user_comment_in .comment_text {
 	float: left;
 	clear: both;
 	display: block;
 }
 
-#comments .user_comment .comment_del_and_change {
+#comments .user_comment .comment_del_and_change, .comment_answer {
 	float: left;
 	margin-left: 10px;
 }
@@ -652,7 +657,15 @@ center h2 {
 	padding: 2px;
 }
 
-#comments .user_comment .comment_del_and_change #comment_delete_form #comment_delete:hover {
+.comment_answer {
+	margin-top: 10px;
+}
+
+.comment_answer .comment_add_answer {
+	color: black;
+}
+
+#comments .user_comment .comment_del_and_change #comment_delete_form #comment_delete:hover, .comment_answer .comment_add_answer:hover {
 	border: none;
 	background-color: white;
 	color: red;
@@ -660,7 +673,7 @@ center h2 {
 	padding: 2px;
 }
 
-#comments .user_comment .comment_del_and_change #comment_change {
+#comments .user_comment .comment_del_and_change #comment_change, .comment_answer .comment_add_answer {
 	margin-top: 10px;
 	float: left;
 	margin-left: 15px;
@@ -756,6 +769,18 @@ center h2 {
 	clear: both;
 	margin-left: 15px;
 	font-size: 1.1em;
+}
+
+.comment_answers {
+	float: left;
+	clear: both;
+}
+
+.comment_answers .user_comment_answer {
+	float: left;
+	clear: both;
+	margin-left: 70px;
+	margin-top: 25px;
 }
 
 /* Styles for login_page and register_page */
