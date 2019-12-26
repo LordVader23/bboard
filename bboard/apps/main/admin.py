@@ -5,6 +5,7 @@ from .models import AdvUser
 from .models import SuperRubric, SubRubric
 from .models import Bb, AdditionalImage
 from .models import Comment
+from .models import Answers
 from .utilities import send_activation_notification
 from .forms import SubRubricForm
 
@@ -89,8 +90,14 @@ class CommentAdmin(admin.ModelAdmin):
     readonly_fields = ('author', 'content', 'bb', 'is_active')
 
 
+class AnswersAdmin(admin.ModelAdmin):
+    list_display = ('comment', 'author', 'content', 'created_at')
+    readonly_fields = ('author', 'content', 'is_active')
+
+
 admin.site.register(Bb, BbAdmin)
 admin.site.register(SubRubric, SubRubricAdmin)
 admin.site.register(SuperRubric, SuperRubricAdmin)
 admin.site.register(AdvUser, AdvUserAdmin)
 admin.site.register(Comment, CommentAdmin)
+admin.site.register(Answers, AnswersAdmin)
