@@ -138,6 +138,20 @@ class Comment(models.Model):
         ordering = ['created_at']
 
 
+class Answers(models.Model):
+    author = models.ForeignKey(AdvUser, on_delete=models.CASCADE, verbose_name='Автор')
+    content = models.TextField(verbose_name='Содержание')
+    is_active = models.BooleanField(default=True, db_index=True,
+                                    verbose_name='Выводить на экран?')
+    created_at = models.DateTimeField(auto_now_add=True, db_index=True,
+                                      verbose_name='Опубликован')
+
+    class Meta:
+        verbose_name_plural = 'Ответы на комментарии'
+        verbose_name = 'Ответ на комментарий'
+        ordering = ['created_at']
+
+
 def post_save_dispatcher(sender, **kwargs):
     author = kwargs['instance'].bb.author
 
