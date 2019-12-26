@@ -129,8 +129,6 @@ class Comment(models.Model):
                                     verbose_name='Выводить на экран?')
     created_at = models.DateTimeField(auto_now_add=True, db_index=True,
                                       verbose_name='Опубликован')
-    answers = models.ForeignKey('Comment', on_delete=models.CASCADE,
-                                verbose_name='Ответ', null=True)
 
     class Meta:
         verbose_name_plural = 'Комментарии'
@@ -145,6 +143,8 @@ class Answers(models.Model):
                                     verbose_name='Выводить на экран?')
     created_at = models.DateTimeField(auto_now_add=True, db_index=True,
                                       verbose_name='Опубликован')
+    comment = models.ForeignKey('Comment', on_delete=models.CASCADE,
+                                verbose_name='Комментарий', null=True)
 
     class Meta:
         verbose_name_plural = 'Ответы на комментарии'
