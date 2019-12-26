@@ -40,6 +40,7 @@ from django.db.models import Q
 from .models import AdvUser
 from .models import SubRubric, Bb
 from .models import Comment
+from .models import Answers
 from .forms import SearchForm
 from .forms import ChangeInfoForm
 from .forms import RegisterUserForm
@@ -410,7 +411,7 @@ class DeleteUserView(LoginRequiredMixin, DeleteView):
 @login_required
 def comment_change(request, comment_id):
     comment = Comment.objects.get(pk=comment_id)
-    initial = {'bb': comment.bb, 'author': comment.author}
+    initial = {'bb': comment.bb, 'author': comment.author, }
     form = CommentChangeForm(initial=initial)
 
     if request.method == 'POST':
@@ -439,7 +440,7 @@ def comment_change(request, comment_id):
 @login_required
 def comment_add_answer(request, comment_id):
     comment = Comment.objects.get(pk=comment_id)
-    initial = {'bb': comment.bb, 'author': comment.author}
+    initial = {'author': comment.author, 'comment': comment}
     form = CommentAddAnswer(initial=initial)
 
     if request.method == 'POST':
