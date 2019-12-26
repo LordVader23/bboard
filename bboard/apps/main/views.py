@@ -49,6 +49,7 @@ from .forms import BbForm, AIFormSet
 from .forms import UserCommentForm, GuestCommentForm
 from .forms import LoginUserForm
 from .forms import CommentChangeForm
+from .forms import CommentAddAnswer
 from .utilities import signer, remember_user
 
 
@@ -439,24 +440,23 @@ def comment_change(request, comment_id):
 def comment_add_answer(request, comment_id):
     comment = Comment.objects.get(pk=comment_id)
     initial = {'bb': comment.bb, 'author': comment.author}
-    form = UserCommentForm(initial=initial)
+    form = CommentAddAnswer(initial=initial)
 
     if request.method == 'POST':
-        if request.user == comment.author:
-            c_form = UserCommentForm(request.POST)
+        c_form = CommentAddAnswer(request.POST)
 
-            if c_form.is_valid():
-                c_form.save()
+        if c_form.is_valid():
+            c_form.save()
 
-                messages.add_message(request, messages.SUCCESS,
-                                        'Сообщение добавлено!')
+            messages.add_message(request, messages.SUCCESS,
+                                    'Сообщение добавлено!')
 
-                return redirect('main:index')
-            else:
-                form = c_form
+            return redirect('main:index')
+        else:
+            form = c_form
 
-                messages.add_message(request, messages.WARNING,
-                                     'Сообщение не добавлено!')
+            messages.add_message(request, messages.WARNING,
+                                 'Сообщение не добавлено!')
 
     context = {'form': form, }
 
