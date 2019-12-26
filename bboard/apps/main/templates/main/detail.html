@@ -104,9 +104,9 @@
 									</div>
 								{% endif %}
 								
-								{% if comment.set__comment %}
+								{% if comment.answers_set %}
 									<div class="comment_answers">
-										{% for answer in comment.set__comment %}
+										{% for answer in comment.answers_set.all %}
 											<div class="user_comment_answer">
 												{% if answer.author.user_image %}
 													<img class="user_img" alt="user_img" src="{{ answer.author.user_image.url }}">
@@ -134,9 +134,11 @@
 													</div>
 												{% else %}
 													<div class="comment_answer">
+														<!--
 														<a href="{% url 'main:comment_add_answer' comment_id=answer.pk %}" class="comment_add_answer">
 															Ответить
 														</a>
+														-->
 													</div>
 												{% endif %}
 											</div>	
