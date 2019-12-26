@@ -130,7 +130,7 @@ class Comment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, db_index=True,
                                       verbose_name='Опубликован')
     answers = models.ForeignKey('Comment', on_delete=models.CASCADE,
-                                verbose_name='Ответ')
+                                verbose_name='Ответ', null=True)
 
     class Meta:
         verbose_name_plural = 'Комментарии'
