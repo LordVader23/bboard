@@ -132,14 +132,14 @@ class UserCommentForm(forms.ModelForm):
 
     class Meta:
         model = Comment
-        exclude = ('is_active',)
+        exclude = ('is_active', 'answers',)
         widgets = {'bb': forms.HiddenInput, 'author': forms.HiddenInput, }
 
 
 class GuestCommentForm(forms.ModelForm):
     class Meta:
         model = Comment
-        exclude = ('is_active', 'author', 'content',)
+        exclude = ('is_active', 'author', 'content', 'answers',)
         widgets = {'bb': forms.HiddenInput}
 
 
