@@ -1,0 +1,34 @@
+{% extends "layout/basic.html" %}
+
+{% load bootstrap4 %}
+
+{% block title %}Добавить ответ к комментарию{% endblock %}
+
+{% block content %}
+<div id="comment_change_page">
+	<h2>Добавить ответ</h2>
+	<form method="post" id="comment_change_form">
+		{% csrf_token %}
+		{% for hidden in form.hidden_fields %}
+			{{ hidden }}
+		{% endfor %}
+		{% for field in form.visible_fields %}
+			{{ field.label_tag }}
+			{{ field }}
+			{{ field.help_text }}
+		{% endfor %}
+		
+		<input type="submit" value="Добавить">
+	</form>
+</div>
+
+<!--
+<div id="profile_bb_delete_page">
+	<form method="post">
+		{% csrf_token %}
+		{{ form.as_p }}
+	<input type="submit" value="Изменить">
+	</form>
+</div>
+-->
+{% endblock %}
