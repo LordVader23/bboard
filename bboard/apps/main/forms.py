@@ -156,3 +156,10 @@ class CommentAddAnswer(forms.ModelForm):
         model = Answers
         exclude = ('is_active', )
         widgets = {'bb': forms.HiddenInput, 'author': forms.HiddenInput, 'comment': forms.HiddenInput, }
+
+
+class AnswerChangeForm(forms.ModelForm):
+    class Meta:
+        model = Answers
+        exclude = ('is_active', )
+        widgets = {'author': forms.HiddenInput, 'comment': forms.HiddenInput, }
