@@ -51,6 +51,7 @@ from .forms import UserCommentForm, GuestCommentForm
 from .forms import LoginUserForm
 from .forms import CommentChangeForm
 from .forms import CommentAddAnswer
+from .forms import AnswerChangeForm
 from .utilities import signer, remember_user
 
 
@@ -462,3 +463,34 @@ def comment_add_answer(request, comment_id):
     context = {'form': form, }
 
     return render(request, 'main/comment_add_answer.html', context)
+# ----------------------------------------------------------------------------
+
+
+# Answers views
+@login_required
+def answer_change(request, answer_id):
+    answer = Answers.objects.get(pk=answer_id)
+    initial = {'author': answer.author, }
+    form = AnswerChangeForm(initial=initial)
+
+    if request.method == 'POST':
+        if request.user == answer.author:
+            c_form = AnswerChangeForm(request.POST)
+
+            if c_form.is_valid():
+                answer.content = request.POST['content']
+                answer.save()
+
+                messages.add_message(request, messages.SUCCESS,
+                                     'Сообщение изменено!')
+
+                return redirect('main:index')
+            else:
+                form = c_form
+
+                messages.add_message(request, messages.WARNING,
+                                     'Сообщение не изменено!')
+
+    context = {'form': form, 'answer': answer, }
+
+    return render(request, 'main/answer_change.html', context)
