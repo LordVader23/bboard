@@ -440,7 +440,7 @@ def comment_change(request, comment_id):
 @login_required
 def comment_add_answer(request, comment_id):
     comment = Comment.objects.get(pk=comment_id)
-    initial = {'author': comment.author, 'comment': comment}
+    initial = {'author': comment.author, 'comment': comment.pk}
     form = CommentAddAnswer(initial=initial)
 
     if request.method == 'POST':
