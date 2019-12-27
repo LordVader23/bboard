@@ -16,6 +16,7 @@ from .views import profile_bb_add, profile_bb_detail, profile_bb_change, profile
 from .views import login
 from .views import comment_change
 from .views import comment_add_answer
+from .views import answer_change
 
 
 app_name = 'main'
@@ -38,6 +39,7 @@ urlpatterns = [
     path('accounts/password/reset/', BBPasswordResetView.as_view(), name='password_reset'),
     path('comment/change/<int:comment_id>/', comment_change, name='comment_change'),
     path('comment/add_answer/<int:comment_id>/', comment_add_answer, name='comment_add_answer'),
+    path('answer/change/<int:answer_id>/', answer_change, name='answer_change'),
     path('<int:rubric_pk>/<int:pk>/', detail, name='detail'),
     path('<int:pk>/', by_rubric, name='by_rubric'),
     path('<str:page>/', other_page, name='other'),
