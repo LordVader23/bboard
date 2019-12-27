@@ -7,6 +7,7 @@ from .models import user_registrated
 from .models import SuperRubric, SubRubric
 from .models import Bb, AdditionalImage
 from .models import Comment
+from .models import Answers
 
 from captcha.fields import CaptchaField
 
@@ -132,14 +133,14 @@ class UserCommentForm(forms.ModelForm):
 
     class Meta:
         model = Comment
-        exclude = ('is_active',)
+        exclude = ('is_active', 'answers',)
         widgets = {'bb': forms.HiddenInput, 'author': forms.HiddenInput, }
 
 
 class GuestCommentForm(forms.ModelForm):
     class Meta:
         model = Comment
-        exclude = ('is_active', 'author', 'content',)
+        exclude = ('is_active', 'author', 'content', 'answers',)
         widgets = {'bb': forms.HiddenInput}
 
 
@@ -148,3 +149,17 @@ class CommentChangeForm(forms.ModelForm):
         model = Comment
         exclude = ('is_active', )
         widgets = {'bb': forms.HiddenInput, 'author': forms.HiddenInput, }
+
+
+class CommentAddAnswer(forms.ModelForm):
+    class Meta:
+        model = Answers
+        exclude = ('is_active', )
+        widgets = {'bb': forms.HiddenInput, 'author': forms.HiddenInput, 'comment': forms.HiddenInput, }
+
+
+class AnswerChangeForm(forms.ModelForm):
+    class Meta:
+        model = Answers
+        exclude = ('is_active', )
+        widgets = {'author': forms.HiddenInput, 'comment': forms.HiddenInput, }

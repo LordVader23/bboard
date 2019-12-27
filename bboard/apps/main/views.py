@@ -40,6 +40,7 @@ from django.db.models import Q
 from .models import AdvUser
 from .models import SubRubric, Bb
 from .models import Comment
+from .models import Answers
 from .forms import SearchForm
 from .forms import ChangeInfoForm
 from .forms import RegisterUserForm
@@ -49,6 +50,8 @@ from .forms import BbForm, AIFormSet
 from .forms import UserCommentForm, GuestCommentForm
 from .forms import LoginUserForm
 from .forms import CommentChangeForm
+from .forms import CommentAddAnswer
+from .forms import AnswerChangeForm
 from .utilities import signer, remember_user
 
 
@@ -409,7 +412,7 @@ class DeleteUserView(LoginRequiredMixin, DeleteView):
 @login_required
 def comment_change(request, comment_id):
     comment = Comment.objects.get(pk=comment_id)
-    initial = {'bb': comment.bb, 'author': comment.author}
+    initial = {'bb': comment.bb, 'author': comment.author, }
     form = CommentChangeForm(initial=initial)
 
     if request.method == 'POST':
@@ -438,26 +441,56 @@ def comment_change(request, comment_id):
 @login_required
 def comment_add_answer(request, comment_id):
     comment = Comment.objects.get(pk=comment_id)
-    initial = {'bb': comment.bb, 'author': comment.author}
-    form = UserCommentForm(initial=initial)
+    initial = {'author': request.user, 'comment': comment}
+    form = CommentAddAnswer(initial=initial)
 
     if request.method == 'POST':
-        if request.user == comment.author:
-            c_form = UserCommentForm(request.POST)
+        c_form = CommentAddAnswer(request.POST, initial=initial)
+
+        if c_form.is_valid():
+            c_form.save()
+
+            messages.add_message(request, messages.SUCCESS,
+                                    'Сообщение добавлено!')
+
+            return redirect('main:index')
+        else:
+            form = c_form
+
+            messages.add_message(request, messages.WARNING,
+                                 'Сообщение не добавлено!')
+
+    context = {'form': form, }
+
+    return render(request, 'main/comment_add_answer.html', context)
+# ----------------------------------------------------------------------------
+
+
+# Answers views
+@login_required
+def answer_change(request, answer_id):
+    answer = Answers.objects.get(pk=answer_id)
+    initial = {'author': answer.author, }
+    form = AnswerChangeForm(initial=initial)
+
+    if request.method == 'POST':
+        if request.user == answer.author:
+            c_form = AnswerChangeForm(request.POST)
 
             if c_form.is_valid():
-                c_form.save()
+                answer.content = request.POST['content']
+                answer.save()
 
                 messages.add_message(request, messages.SUCCESS,
-                                        'Сообщение добавлено!')
+                                     'Сообщение изменено!')
 
                 return redirect('main:index')
             else:
                 form = c_form
 
                 messages.add_message(request, messages.WARNING,
-                                     'Сообщение не добавлено!')
+                                     'Сообщение не изменено!')
 
-    context = {'form': form, }
+    context = {'form': form, 'answer': answer, }
 
-    return render(request, 'main/comment_add_answer.html', context)
+    return render(request, 'main/answer_change.html', context)
