@@ -540,6 +540,10 @@ center h2 {
 	height: auto;
 }
 
+#comments {
+	width: 100%;
+}
+
 #comment_add {
 	float: left;
 }
@@ -774,13 +778,47 @@ center h2 {
 .comment_answers {
 	float: left;
 	clear: both;
+	margin-left: 70px;
 }
 
 .comment_answers .user_comment_answer {
 	float: left;
 	clear: both;
-	margin-left: 70px;
 	margin-top: 25px;
+}
+
+.user_comment_answer .answer_del_and_change {
+	float: left;
+	margin-left: 10px;
+}
+
+.answer_del_and_change .answer_change {
+	float: left;
+	margin-top: 10px;
+	clear: both;
+}
+
+.user_comment_answer .answer_del_and_change img {
+	width: 20px;
+	height: 20px;
+	
+}
+
+.user_comment_answer .answer_del_and_change .answer_delete_form {
+	float: left;
+	clear: both;
+}
+
+.answer_delete_form .answer_delete {
+	border: 1px solid white;
+	padding: 2px;
+	color: black;
+	background-color: white;
+}
+
+.answer_delete_form .answer_delete:hover {
+	color: red;
+	border-bottom: 1px solid red;
 }
 
 /* Styles for login_page and register_page */
