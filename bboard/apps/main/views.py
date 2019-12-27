@@ -500,3 +500,34 @@ def answer_change(request, answer_id):
     context = {'form': form, 'answer': answer, }
 
     return render(request, 'main/answer_change.html', context)
+
+
+@login_required
+def answer_add_answer(request, comment_id, answer_id):
+    comment = Comment.objects.get(pk=comment_id)
+    answer = Answers.objects.get(pk=answer_id)
+    initial = {'author': request.user, 'comment': comment}
+    form = CommentAddAnswer(initial=initial)
+
+    if request.method == 'POST':
+        content = request.POST['content']
+        request.POST = request.POST.copy()
+        request.POST['content'] = '@{} {}'.format(answer.author, content)
+        c_form = CommentAddAnswer(request.POST, initial=initial)
+
+        if c_form.is_valid():
+            c_form.save()
+
+            messages.add_message(request, messages.SUCCESS,
+                                 'Сообщение добавлено!')
+
+            return redirect('main:index')
+        else:
+            form = c_form
+
+            messages.add_message(request, messages.WARNING,
+                                 'Сообщение не добавлено!')
+
+    context = {'form': form, }
+
+    return render(request, 'main/comment_add_answer.html', context)
