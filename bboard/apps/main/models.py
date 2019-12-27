@@ -143,8 +143,8 @@ class Answers(models.Model):
                                     verbose_name='Выводить на экран?')
     created_at = models.DateTimeField(auto_now_add=True, db_index=True,
                                       verbose_name='Опубликован')
-    comment = models.ForeignKey('Comment', on_delete=models.CASCADE,
-                                verbose_name='Комментарий', null=True)
+    comment = models.ForeignKey(Comment, on_delete=models.CASCADE,
+                                verbose_name='Комментарий')
 
     class Meta:
         verbose_name_plural = 'Ответы на комментарии'
