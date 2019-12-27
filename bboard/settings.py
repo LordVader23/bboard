@@ -132,6 +132,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'bboard/apps/main/static')
 STATICFILES_DIRS = [
     ('main_css', 'D:/Django/bboard/bboard/apps/main/static/css')
 ]
