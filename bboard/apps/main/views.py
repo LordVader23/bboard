@@ -129,10 +129,16 @@ def detail(request, rubric_pk, pk):
                                      'Комментарий не добавлен!')
         else:
             if request.user.is_authenticated:
-                comment_pk = request.POST['comment_id']
-                comment = Comment.objects.get(pk=comment_pk)
+                if 'comment_id' in request.POST:
+                    comment_pk = request.POST['comment_id']
+                    comment = Comment.objects.get(pk=comment_pk)
 
-                comment.delete()
+                    comment.delete()
+                elif 'answer_id' in request.POST:
+                    answer_pk = request.POST['answer_id']
+                    answer = Answers.objects.get(pk=answer_pk)
+
+                    answer.delete()
 
     context = {'bb': bb, 'ais': ais, 'comments': comments, 'form': form}
 
