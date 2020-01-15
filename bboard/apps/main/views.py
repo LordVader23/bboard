@@ -492,7 +492,16 @@ def answer_change(request, answer_id):
                 if match:
                     request.POST = request.POST.copy()
                     content = request.POST['content']
-                    content = '@{} {}'.format(match.group(0), content)
+
+                    # If request.POST['content'] already contains necessary @<user_name>
+                    match_request = re.search(r'^@(\w{1,})', content)
+                    if match_request and match_request.group(0) == match.group(0):
+                        answer.content = request.POST['content']
+                        answer.save()
+
+                        return redirect('main:index')
+
+                    content = '{} {}'.format(match.group(0), content)
 
                     answer.content = content
                     answer.save()
