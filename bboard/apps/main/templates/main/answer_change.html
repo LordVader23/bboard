@@ -8,8 +8,8 @@
 <div id="comment_change_page">
 	<div id="old_comment">
 		<h2>Старый ответ</h2>
-		<p>Статья: <a href="{% url 'main:detail' rubric_pk=answer.bb.rubric.pk pk=answer.bb.pk %}">
-			{{ answer.bb }}
+		<p>Статья: <a href="{% url 'main:detail' rubric_pk=answer.comment.bb.rubric.pk pk=answer.comment.bb.pk %}">
+			{{ answer.comment.bb }}
 		</a></p>
 		<p>Текст:</p>
 		<span>{{ answer.content }}</span>
