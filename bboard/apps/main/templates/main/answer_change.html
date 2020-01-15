@@ -1,0 +1,43 @@
+{% extends "layout/basic.html" %}
+
+{% load bootstrap4 %}
+
+{% block title %}Изменение ответа на комментарий{% endblock %}
+
+{% block content %}
+<div id="comment_change_page">
+	<div id="old_comment">
+		<h2>Старый ответ</h2>
+		<p>Статья: <a href="{% url 'main:detail' rubric_pk=answer.bb.rubric.pk pk=answer.bb.pk %}">
+			{{ answer.bb }}
+		</a></p>
+		<p>Текст:</p>
+		<span>{{ answer.content }}</span>
+		<p>Дата создания: {{ answer.created_at }}</p>
+	</div>
+	<h2>Изменить ответ</h2>
+	<form method="post" id="comment_change_form">
+		{% csrf_token %}
+		{% for hidden in form.hidden_fields %}
+			{{ hidden }}
+		{% endfor %}
+		{% for field in form.visible_fields %}
+			{{ field.label_tag }}
+			{{ field }}
+			{{ field.help_text }}
+		{% endfor %}
+		
+		<input type="submit" value="Изменить">
+	</form>
+</div>
+
+<!--
+<div id="profile_bb_delete_page">
+	<form method="post">
+		{% csrf_token %}
+		{{ form.as_p }}
+	<input type="submit" value="Изменить">
+	</form>
+</div>
+-->
+{% endblock %}
