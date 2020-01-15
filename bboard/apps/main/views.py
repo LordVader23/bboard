@@ -54,6 +54,8 @@ from .forms import CommentAddAnswer
 from .forms import AnswerChangeForm
 from .utilities import signer, remember_user
 
+import re
+
 
 def index(request):
     bbs = Bb.objects.all()[:10]
@@ -476,26 +478,37 @@ def comment_add_answer(request, comment_id):
 @login_required
 def answer_change(request, answer_id):
     answer = Answers.objects.get(pk=answer_id)
-    initial = {'author': answer.author, }
+    initial = {'author': answer.author, 'comment': answer.comment}
     form = AnswerChangeForm(initial=initial)
 
     if request.method == 'POST':
         if request.user == answer.author:
-            c_form = AnswerChangeForm(request.POST)
+            c_form = AnswerChangeForm(request.POST, initial=initial)
 
             if c_form.is_valid():
-                answer.content = request.POST['content']
-                answer.save()
+
+                # If answer is answer(to other answer) then add @<user_name> at start answer
+                match = re.search(r'^@(\w{1,})', answer.content)
+                if match:
+                    request.POST = request.POST.copy()
+                    content = request.POST['content']
+                    content = '@{} {}'.format(match.group(0), content)
+
+                    answer.content = content
+                    answer.save()
+                else:
+                    answer.content = request.POST['content']
+                    answer.save()
 
                 messages.add_message(request, messages.SUCCESS,
-                                     'Сообщение изменено!')
+                                     'Ответ изменен!')
 
                 return redirect('main:index')
             else:
                 form = c_form
 
                 messages.add_message(request, messages.WARNING,
-                                     'Сообщение не изменено!')
+                                     'Ответ не изменен!')
 
     context = {'form': form, 'answer': answer, }
 
