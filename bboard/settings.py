@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'api.apps.ApiConfig',
+    'weatherapp.apps.WeatherappConfig',
 ]
 
 MIDDLEWARE = [
