@@ -135,7 +135,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 # STATIC_ROOT = os.path.join(BASE_DIR, 'bboard/apps/main/static')
 STATICFILES_DIRS = [
-    ('main_css', os.path.join(BASE_DIR, 'bboard/apps/main/static/css'))
+    ('main_css', os.path.join(BASE_DIR, 'bboard/apps/main/static/css')),
+    ('weather_css', os.path.join(BASE_DIR, 'bboard/apps/weatherapp/static/css')),
 ]
 
 # Auth user
