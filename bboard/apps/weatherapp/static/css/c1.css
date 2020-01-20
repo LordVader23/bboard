@@ -1,0 +1,137 @@
+@charset "utf-8";
+* {
+	margin: 0px;
+	padding: 0px;
+	outline: none;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	width: 100%;
+	height: 100%;
+	color: #333333;
+	font-family: "Segoe UI", sans-serif;
+	font-size: 1em;
+}
+
+header, footer {
+	width: 100%;
+	min-height: 50px;
+	background-color: #373737;
+	float: left;
+}
+
+header {
+	border-bottom: 2px solid silver;
+}
+
+footer {
+	border-top: 2px solid silver;
+	margin-top: 25px;
+}
+
+a {
+	color: #671FEC;
+	text-decoration: none;
+	transition: all.6s ease;
+}
+
+a:hover {
+	color: black;
+	text-decoration: none;
+	transition: all.6s ease;
+}
+
+a:active {
+	color: aqua;
+}
+
+::selection {
+	background: #00FC05;
+	color: #F7F7F7;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+#main_title {
+	font-size: 2em;
+	margin: 10px 30px 10px 10px;
+	color: crimson;
+	
+}
+
+#auth,  #reg, #profile {
+	font-size: 1.3em;
+	margin-right: 20px;
+	float: right;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	display: block;
+	padding: 5px;
+	border-radius: 7px;
+	color: red;
+}
+
+#auth:hover,  #reg:hover, #profile:hover {
+	background-color: chocolate;
+	color: white;
+}
+
+.left {
+	float: left;
+	margin: 10px;
+	color: red;
+}
+
+.social {
+	float: right;
+	width: 40px;
+	height: 40px;
+	margin: 10px;
+}
+
+.clear {
+	clear: both;
+}
+
+#page_wrap:after {
+	content: "";
+	display: block;
+}
+
+footer, #page_wrap:after {
+	height: 10px;
+}
+
+#page_wrap {
+	min-height: 94%;
+	margin-bottom: -10px;
+}
+
+#menuhreves a {
+	margin: 10px;
+}
+
+#menu hr {
+	max-width:  100%;
+	width: 500px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	display: block;
+}
+
+#menu h2 {
+	color: #4D4D4D;
+}
+
+#wrapper {
+	float: left;
+	width: 100%;
+}
+
