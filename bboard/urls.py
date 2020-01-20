@@ -24,6 +24,7 @@ urlpatterns = [
     path('captcha/', include('captcha.urls')),
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
+    path('weather/', include('weatherapp.urls')),
     path('', include('main.urls', namespace='')),
 ]
 
