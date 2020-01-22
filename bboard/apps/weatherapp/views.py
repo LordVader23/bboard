@@ -13,8 +13,8 @@ def index(request):
     city_info = {
         'city': city,
         'temp': res['main']['temp'],
-        'icon': res['weather']['icon']
-    }
+
+    } #'icon': res['weather']['icon']
 
     context = {
         'info': city_info
