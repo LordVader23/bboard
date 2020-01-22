@@ -63,7 +63,7 @@ img {
 	font-size: 2em;
 	margin: 10px 30px 10px 10px;
 	color: crimson;
-	
+
 }
 
 #auth,  #reg, #profile {
@@ -135,3 +135,50 @@ footer, #page_wrap:after {
 	width: 100%;
 }
 
+/* Styles for weather app */
+#weather_left, #weather_right {
+	float: left;
+	width: 35%;
+	min-height: 100px;
+	margin-left: 10%;
+	margin-top: 50px;
+	border-radius: 15px;
+	background-color: #f7f7f7;
+}
+
+#weather_left h1, #weather_right h1 {
+	color: red;
+	margin-left: 15px;
+	margin-top: 15px;
+}
+
+#city_form {
+	float: left;
+	width: 90%;
+	margin-left: 10%;
+	margin-top: 10px;
+}
+
+#city_form input {
+	float: left;
+	clear: both;
+	margin-left: 10px;
+	margin-bottom: 5px;
+}
+
+#city_form input[type=text] {
+	padding: 5px;
+	border: 1px solid silver;
+	border-radius: 5px;
+}
+
+#city_form input[type=submit] {
+	padding: 5px;
+	border: 1px solid red;
+	background-color: white;
+	border-radius: 5px;
+}
+
+#city_form input[type=submit]:hover {
+	background-color: red;
+}
