@@ -6,8 +6,22 @@
 {% block title %}Погода - главная{% endblock %}
 
 {% block content %}
-	<h1>Weather</h1>
+<div id="weather_left">
+	<h1>Выберите город</h1>
+
+	<form id="city_form" method="post" name="city_choose">
+		<input type="text" name="city_name" placeholder="Введите название города">
+		<input type="submit" name="submit" value="Узнать погоду">
+	</form>
+</div>
+
+<div id="weather_right">
+	<h1>Информация</h1>
+	<div class="weather_info">
+		<p>Город: {{ info.city }}</p>
+		<p>Температура: {{ info.temp }}<sup>o</sup></p>
+		<imp src='http://openweathermap.org/w/{{ info.icon }}.png' alt=''>
+	</div>
+</div>
 
 {% endblock %}
-
-
