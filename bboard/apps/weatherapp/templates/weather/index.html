@@ -10,7 +10,9 @@
 	<h1>Выберите город</h1>
 
 	<form id="city_form" method="post" name="city_choose">
-		<input type="text" name="city_name" placeholder="Введите название города">
+		<!-- <input type="text" name="city_name" placeholder="Введите название города"> -->
+		{% csrf_token %}
+		{{ form.name }}
 		<input type="submit" name="submit" value="Узнать погоду">
 	</form>
 </div>
