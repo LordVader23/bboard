@@ -17,11 +17,13 @@
 
 <div id="weather_right">
 	<h1>Информация</h1>
-	<div class="weather_info">
-		<p>Город: {{ info.city }}</p>
-		<p>Температура: {{ info.temp }}<sup>o</sup></p>
-		<imp src='http://openweathermap.org/w/{{ info.icon }}.png' alt=''>
-	</div>
+	{% for city in cities %}
+		<div class="weather_info">
+			<p>Город: {{ city.city }}</p>
+			<p>Температура: {{ city.temp }}<sup>o</sup></p>
+			<img src='http://openweathermap.org/img/wn/{{ city.icon }}.png' alt=''>
+		</div>
+	{% endfor %}
 </div>
 
 {% endblock %}
