@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import City
+from .forms import CityForm
 import requests
 
 
@@ -9,6 +10,12 @@ def index(request):
           'weather?q={}&units={}&appid={}'
     temp = 'metric'
     city1 = 'London'
+
+    if request.method == 'POST':
+        form = CityForm(request.POST)
+        form.save()
+
+    form = CityForm()
 
     cities = City.objects.all()
     all_cities = []
@@ -25,7 +32,8 @@ def index(request):
         all_cities.append(city_info)
 
     context = {
-        'cities': all_cities
+        'cities': all_cities,
+        'form': form
     }
 
     return render(request, 'weather/index.html', context)
