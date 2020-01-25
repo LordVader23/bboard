@@ -12,7 +12,14 @@
 	<form id="city_form" method="post" name="city_choose">
 		<!-- <input type="text" name="city_name" placeholder="Введите название города"> -->
 		{% csrf_token %}
-		{{ form.name }}
+		{% for hidden in form.hidden_fields %}
+			{{ hidden }}
+		{% endfor %}
+		{% for field in form.visible_fields %}
+			{{ field.label_tag }}
+			{{ field }}
+			{{ field.help_text }}
+		{% endfor %}
 		<input type="submit" name="submit" value="Узнать погоду">
 	</form>
 </div>
