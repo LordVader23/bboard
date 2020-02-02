@@ -12,21 +12,6 @@ def index(request):
     city1 = 'London'
     lang = 'en'
 
-    # Get cities from model City and prepare they for adding to context
-    cities = City.objects.all()
-    all_cities = []
-
-    for city2 in cities:
-        res = requests.get(url.format(city2.name, temp, appid, lang)).json()
-        city_info = {
-            'city': city2.name,
-            'temp': res['main']['temp'],
-            'icon': res['weather'][0]['icon']
-
-        }
-        # list for context
-        all_cities.append(city_info)
-
     if request.method == 'POST':
         form = CityForm(request.POST)
 
@@ -63,6 +48,21 @@ def index(request):
             'icon': res['weather'][0]['icon']
         }
 
+        # Get cities from model City and prepare they for adding to context
+        cities = City.objects.all()
+        all_cities = []
+
+        for city2 in cities:
+            res = requests.get(url.format(city2.name, temp, appid, lang)).json()
+            city_info = {
+                'city': city2.name,
+                'temp': res['main']['temp'],
+                'icon': res['weather'][0]['icon']
+
+            }
+            # list for context
+            all_cities.append(city_info)
+
         context = {
             'main_city': info,
             'cities': all_cities,
@@ -72,8 +72,23 @@ def index(request):
     else:
         form = CityForm()
 
+        # Get cities from model City and prepare they for adding to context
+        cities = City.objects.all()
+        all_cities = []
+
+        for city2 in cities:
+            res = requests.get(url.format(city2.name, temp, appid, lang)).json()
+            city_info = {
+                'city': city2.name,
+                'temp': res['main']['temp'],
+                'icon': res['weather'][0]['icon']
+
+            }
+            # list for context
+            all_cities.append(city_info)
+
         context = {
-            'main_city': None,
+            'main_city': False,
             'cities': all_cities,
             'form': form,
             'temp': temp
