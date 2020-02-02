@@ -28,7 +28,7 @@
 		</select>
 
 		<label for="">Выберете систему исчеслений</label>
-		<select id="temp_select" name="ltemp_select">
+		<select id="temp_select" name="temp_select">
 			<option value="0">Кельвины</option>
 			<option value="1">Цельсии</option>
 			<option value="2">Фаренгейты</option>
@@ -39,6 +39,12 @@
 
 <div id="weather_right">
 	<h1>Информация</h1>
+	<div id="weather_info_main">
+		<p>Город: {{ main_city.city }}</p>
+		<p>Температура: {{ main_city.temp }}<sup>o</sup></p>
+		<img src='http://openweathermap.org/img/wn/{{ main_city.icon }}.png' alt=''>
+	</div>
+
 	{% for city in cities %}
 		<div class="weather_info">
 			<p>Город: {{ city.city }}</p>
