@@ -5,6 +5,7 @@ import requests
 
 
 def index(request):
+    # Default values
     appid = '57725f55f04ae1d78715ff2234f8dfa6'
     url = 'https://api.openweathermap.org/data/2.5/' \
           'weather?q={}&units={}&appid={}&lang={}'
@@ -55,7 +56,7 @@ def index(request):
         for city2 in cities:
             res = requests.get(url.format(city2.name, temp, appid, lang)).json()
             city_info = {
-                'city': city2.name,
+                'city': res['name'],
                 'temp': res['main']['temp'],
                 'icon': res['weather'][0]['icon']
 
@@ -79,7 +80,7 @@ def index(request):
         for city2 in cities:
             res = requests.get(url.format(city2.name, temp, appid, lang)).json()
             city_info = {
-                'city': city2.name,
+                'city': res['name'],
                 'temp': res['main']['temp'],
                 'icon': res['weather'][0]['icon']
 
