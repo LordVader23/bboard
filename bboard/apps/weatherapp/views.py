@@ -12,42 +12,7 @@ def index(request):
     city1 = 'London'
     lang = 'en'
 
-    if request.method == 'POST':
-        form = CityForm(request.POST)
-
-        if form.is_valid():
-            form.save()
-
-    # Clear form
-    form = CityForm()
-
-    if 'temp_select' in request.POST:
-        temp_code = request.POST['temp_select']
-
-        if temp_code == '0':
-            temp = 'kelvin'
-        elif temp_code == '1':
-            temp = 'metric'
-        elif temp_code == '2':
-            temp = 'imperial'
-
-    if 'lang_select' in request.POST:
-        lang_code = request.POST['lang_select']
-
-        if lang_code == '0':
-            lang = 'en'
-        elif lang_code == '1':
-            lang = 'ru'
-
-    # Main_city - city, which was added to the form field
-    city1 = request.POST['city_name']
-    res = requests.get(url.format(city1.name, temp, appid, lang)).json()
-    info = {
-        'city': city1,
-        'temp': res['main']['temp'],
-        'icon': res['weather'][0]['icon']
-    }
-
+    # Get cities from model City and prepare they for adding to context
     cities = City.objects.all()
     all_cities = []
 
@@ -59,14 +24,58 @@ def index(request):
             'icon': res['weather'][0]['icon']
 
         }
-
+        # list for context
         all_cities.append(city_info)
 
-    context = {
-        'main_city': info,
-        'cities': all_cities,
-        'form': form
-    }
+    if request.method == 'POST':
+        form = CityForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+
+        # Clear form
+        form = CityForm()
+
+        if 'temp_select' in request.POST:
+            temp_code = request.POST['temp_select']
+
+            if temp_code == '0':
+                temp = 'kelvin'
+            elif temp_code == '1':
+                temp = 'metric'
+            elif temp_code == '2':
+                temp = 'imperial'
+
+        if 'lang_select' in request.POST:
+            lang_code = request.POST['lang_select']
+
+            if lang_code == '0':
+                lang = 'en'
+            elif lang_code == '1':
+                lang = 'ru'
+
+        # Main_city - city, which was added to the form field
+        city1 = request.POST['name']
+        res = requests.get(url.format(city1, temp, appid, lang)).json()
+        info = {
+            'city': city1,
+            'temp': res['main']['temp'],
+            'icon': res['weather'][0]['icon']
+        }
+
+        context = {
+            'main_city': info,
+            'cities': all_cities,
+            'form': form
+        }
+    else:
+        form = CityForm()
+
+        context = {
+            'main_city': None,
+            'cities': all_cities,
+            'form': form
+        }
 
     return render(request, 'weather/index.html', context)
 
