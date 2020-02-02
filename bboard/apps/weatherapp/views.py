@@ -58,7 +58,7 @@ def index(request):
         city1 = request.POST['name']
         res = requests.get(url.format(city1, temp, appid, lang)).json()
         info = {
-            'city': city1,
+            'city': res['name'],
             'temp': res['main']['temp'],
             'icon': res['weather'][0]['icon']
         }
@@ -66,7 +66,8 @@ def index(request):
         context = {
             'main_city': info,
             'cities': all_cities,
-            'form': form
+            'form': form,
+            'temp': temp
         }
     else:
         form = CityForm()
@@ -74,7 +75,8 @@ def index(request):
         context = {
             'main_city': None,
             'cities': all_cities,
-            'form': form
+            'form': form,
+            'temp': temp
         }
 
     return render(request, 'weather/index.html', context)
