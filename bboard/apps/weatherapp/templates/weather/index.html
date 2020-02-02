@@ -39,21 +39,38 @@
 
 <div id="weather_right">
 	<h1>Информация</h1>
-	{% if main_city == none %}
-	<div id="weather_info_main">
-		<div class="weather_info_in">
-			<p>Город: {{ main_city.city }}</p>
-			<p>Температура: {{ main_city.temp }}<sup>o</sup></p>
+	{% if main_city %}
+		<div id="weather_info_main">
+			<div class="weather_info_in">
+				<p>Город: {{ main_city.city }}</p>
+				<p>Температура: {{ main_city.temp }}
+					{% if temp == 'metric' %}
+						<sup>o</sup>
+					{% elif temp == 'kelvin' %}
+						К
+					{% elif temp == 'imperial' %}
+						Ф
+					{% endif %}
+				</p>
+			</div>
+			<img src='http://openweathermap.org/img/wn/{{ main_city.icon }}.png' alt=''>
 		</div>
-		<img src='http://openweathermap.org/img/wn/{{ main_city.icon }}.png' alt=''>
-	</div>
 	{% endif %}
+
 
 	{% for city in cities %}
 		<div class="weather_info">
 			<div class="weather_info_in">
 				<p>Город: {{ city.city }}</p>
-				<p>Температура: {{ city.temp }}<sup>o</sup></p>
+				<p>Температура: {{ city.temp }}
+					{% if temp == 'metric' %}
+						<sup>o</sup>
+					{% elif temp == 'kelvin' %}
+						К
+					{% elif temp == 'imperial' %}
+						Ф
+					{% endif %}
+				</p>
 			</div>
 			<img src='http://openweathermap.org/img/wn/{{ city.icon }}.png' alt=''>
 		</div>
