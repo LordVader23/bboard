@@ -182,3 +182,11 @@ footer, #page_wrap:after {
 #city_form input[type=submit]:hover {
 	background-color: red;
 }
+
+#city_form label {
+	float: left;
+	clear: both;
+	margin-left: 10px;
+	margin-bottom: 5px;
+	font-size: 1.1em;
+}
