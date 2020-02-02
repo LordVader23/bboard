@@ -16,7 +16,26 @@ def index(request):
         form = CityForm(request.POST)
         form.save()
 
+    # Clear form
     form = CityForm()
+
+    if 'temp_select' in request.POST:
+        temp_code = request.POST['temp_select']
+
+        if temp_code == '0':
+            temp = 'kelvin'
+        elif temp_code == '1':
+            temp = 'metric'
+        elif temp_code == '2':
+            temp = 'imperial'
+
+    if 'lang_select' in request.POST:
+        lang_code = request.POST['lang_select']
+
+        if lang_code == '0':
+            lang = 'en'
+        elif lang_code == '1':
+            lang = 'ru'
 
     cities = City.objects.all()
     all_cities = []
