@@ -7,9 +7,10 @@ import requests
 def index(request):
     appid = '57725f55f04ae1d78715ff2234f8dfa6'
     url = 'https://api.openweathermap.org/data/2.5/' \
-          'weather?q={}&units={}&appid={}'
+          'weather?q={}&units={}&appid={}&lang={}'
     temp = 'metric'
     city1 = 'London'
+    lang = 'en'
 
     if request.method == 'POST':
         form = CityForm(request.POST)
@@ -21,7 +22,7 @@ def index(request):
     all_cities = []
 
     for city2 in cities:
-        res = requests.get(url.format(city2.name, temp, appid)).json()
+        res = requests.get(url.format(city2.name, temp, appid, lang)).json()
         city_info = {
             'city': city2.name,
             'temp': res['main']['temp'],
