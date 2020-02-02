@@ -20,6 +20,19 @@
 			{{ field }}
 			{{ field.help_text }}
 		{% endfor %}
+
+		<label for="">Выберете язык</label>
+		<select id="lang_select" name="lang_select">
+			<option value="0">English</option>
+			<option value="1">Русский</option>
+		</select>
+
+		<label for="">Выберете систему исчеслений</label>
+		<select id="temp_select" name="ltemp_select">
+			<option value="0">Кельвины</option>
+			<option value="1">Цельсии</option>
+			<option value="2">Фаренгейты</option>
+		</select>
 		<input type="submit" name="submit" value="Узнать погоду">
 	</form>
 </div>
