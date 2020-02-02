@@ -170,6 +170,7 @@ footer, #page_wrap:after {
 	padding: 5px;
 	border: 1px solid silver;
 	border-radius: 5px;
+	margin-bottom: 10px;
 }
 
 #city_form input[type=submit] {
@@ -189,4 +190,15 @@ footer, #page_wrap:after {
 	margin-left: 10px;
 	margin-bottom: 5px;
 	font-size: 1.1em;
+}
+
+#temp_select, #lang_select {
+	float: left;
+	clear: both;
+	background-color: white;
+	padding: 3px;
+	border: 1px solid silver;
+	border-radius: 5px;
+	margin-left: 10px;
+	margin-bottom: 10px;
 }
