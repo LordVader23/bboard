@@ -14,7 +14,9 @@ def index(request):
 
     if request.method == 'POST':
         form = CityForm(request.POST)
-        form.save()
+
+        if form.is_valid():
+            form.save()
 
     # Clear form
     form = CityForm()
@@ -37,6 +39,15 @@ def index(request):
         elif lang_code == '1':
             lang = 'ru'
 
+    # Main_city - city, which was added to the form field
+    city1 = request.POST['city_name']
+    res = requests.get(url.format(city1.name, temp, appid, lang)).json()
+    info = {
+        'city': city1,
+        'temp': res['main']['temp'],
+        'icon': res['weather'][0]['icon']
+    }
+
     cities = City.objects.all()
     all_cities = []
 
@@ -52,6 +63,7 @@ def index(request):
         all_cities.append(city_info)
 
     context = {
+        'main_city': info,
         'cities': all_cities,
         'form': form
     }
