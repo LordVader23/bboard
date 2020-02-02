@@ -152,6 +152,40 @@ footer, #page_wrap:after {
 	margin-top: 15px;
 }
 
+#weather_info_main {
+	background-color: #1EC2D8;
+	margin-left: 20px;
+	margin-top: 15px;
+	margin-bottom: 20px;
+	float: left;
+	clear: both;
+	padding: 7px;
+	/* color: #0A4AC2; */
+}
+
+.weather_info {
+	background-color: #146ECD;
+	float: left;
+	clear: both;
+	margin-left: 20px;
+	margin-top: 15px;
+	padding: 7px;
+	/* color: #0A4AC2; */
+}
+
+.weather_info img, #weather_info_main img {
+	float: right;
+	margin-top: 5px;
+	margin-right: 10px;
+	margin-left: 25px;
+	height: 50px;
+	width: 50px;
+}
+
+.weather_info_in {
+	float: left;
+}
+
 #city_form {
 	float: left;
 	width: 90%;
