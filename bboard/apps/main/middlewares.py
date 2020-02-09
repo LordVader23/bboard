@@ -1,11 +1,12 @@
 from .models import SubRubric
+from .models import SuperRubric
 from django.conf import settings
 from datetime import timedelta, date
 
 
 def bboard_context_processor(request):
     context = {}
-    context['rubrics'] = SubRubric.objects.all()
+    context['rubrics'] = SuperRubric.objects.all()
     context['keyword'] = ''
     context['all'] = ''
 
