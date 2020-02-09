@@ -159,13 +159,14 @@ footer, #page_wrap:after {
 	margin-bottom: 25px;
 	margin-right: 1%;
 	width: 26%;
+	height: 350px;
 }
 
 @media (max-width: 1099px) and (min-width: 900px){
 	#wrapper #articles article {
 		width: 25%;
 		margin-top: 25px;
-		min-height: 300px;
+		height: 500px;
 		margin-left: 2%;
 }
 
@@ -181,6 +182,7 @@ footer, #page_wrap:after {
 		width: 40%;
 		margin-top: 25px;
 		margin-left: 2%;
+		height: 500px;
 }
 
 	#wrapper #articles {
@@ -195,6 +197,7 @@ footer, #page_wrap:after {
 		width: 96%;
 		margin-top: 25px;
 		margin-left: 2%;
+		height: 500px;
 	}
 
 	#wrapper #articles {
