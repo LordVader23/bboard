@@ -38,7 +38,7 @@ from django.urls import reverse_lazy
 from django.db.models import Q
 
 from .models import AdvUser
-from .models import SubRubric, Bb
+from .models import SubRubric, Bb, SuperRubric
 from .models import Comment
 from .models import Answers
 from .forms import SearchForm
