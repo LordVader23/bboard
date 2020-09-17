@@ -30,46 +30,47 @@
 				<a href="" title="Список рубрик">Рубрики</a>
 				<a href="feedback.html" title="Обратная связь">Обратная связь</a>
 			</div>
-			
+
 		</center>
 		<div id="wrapper">
 			<aside>
 				<p><h2>Рубрики</h2></p>
 				{% for rubric in rubrics %}
 						<div class="sidebar_block">
-							<a href="{% url 'main:by_rubric' pk=rubric.pk%}">
+							<a href="">
+								<!-- <a href="{% url 'main:by_rubric' pk=rubric.pk%}"> -->
 								{% if rubric.image %}
 									<img src="{{ rubric.image.url }}" class="sidebar_img" alt="house">
-								{% else %}	
+								{% else %}
 									<img src="{% static 'main/empty.jpg' %}" class="sidebar_img" alt="house">
 								{% endif %}
-								
+
 							<p class="sidebar_p">{{ rubric.name }}</p>
 							</a>
 						</div>
 				{% endfor %}
 			</aside>
-			
+
 			{% block content %}
 			{% endblock %}
 <!--
 			<div id="main_soc_block">
 				<div id="main_soc_block_in">
 					Lorem ipsum dorem
-				
+
 				</div>
-			
+
 			</div>
 -->
 		</div>
-		
+
 	</div>
-	
+
 	<footer>
 		<p class="left">Все права защищены &copy; 2019</p>
 		<a href="#" title="VK"><img src="{% static 'main/VK.png' %}" class="social" alt="VK"/></a>
-		
-		
+
+
 	</footer>
 </body>
 </html>
