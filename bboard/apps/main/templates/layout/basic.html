@@ -36,18 +36,75 @@
 			<aside>
 				<p><h2>Рубрики</h2></p>
 				{% for rubric in rubrics %}
+
 						<div class="sidebar_block">
-							<a href="">
-								<!-- <a href="{% url 'main:by_rubric' pk=rubric.pk%}"> -->
-								{% if rubric.image %}
-									<img src="{{ rubric.image.url }}" class="sidebar_img" alt="house">
-								{% else %}
-									<img src="{% static 'main/empty.jpg' %}" class="sidebar_img" alt="house">
-								{% endif %}
+
+							{% if rubric.image %}
+								<img src="{{ rubric.image.url }}" class="sidebar_img" alt="house">
+							{% else %}
+								<img src="{% static 'main/empty.jpg' %}" class="sidebar_img" alt="house">
+							{% endif %}
 
 							<p class="sidebar_p">{{ rubric.name }}</p>
-							</a>
+
+
+
+									<!-- <div class="subrubric_block">
+										<a href=""> 
+											{% if subrubric.image %}
+												<img src="{{ subrubric.image.url }}" class="sidebar_img" alt="house">
+											{% else %}
+												<img src="{% static 'main/empty.jpg' %}" class="sidebar_img" alt="house">
+											{% endif %}
+
+										<p class="sidebar_p">{{ subrubric.name }}</p>
+										</a>
+									</div> -->
+
+									<div class="dropdown">
+							        <div class="select">
+							        		<span>{{ rubric.name }}</span>
+							        		<i class="fa fa-chevron-left"></i>
+							        </div>
+							        <input type="hidden" name="gender">
+							        <ul class="dropdown-menu">
+													{% for subrubric in rubric.rubric_set.all %}
+								        			<li id="male"><a href="{% url 'main:by_rubric' pk=subrubric.pk %}">{{ subrubric.name }}</a></li>
+													{% endfor %}
+							        </ul>
+                 </div>
+
+                 <span class="msg"></span>
+
+								 <script>
+								 $('.dropdown').click(function () {
+										 $(this).attr('tabindex', 1).focus();
+										 $(this).toggleClass('active');
+										 $(this).find('.dropdown-menu').slideToggle(300);
+								 });
+
+								 $('.dropdown').focusout(function () {
+										 $(this).removeClass('active');
+										 $(this).find('.dropdown-menu').slideUp(300);
+								 });
+
+								 $('.dropdown .dropdown-menu li').click(function () {
+										 $(this).parents('.dropdown').find('span').text($(this).text());
+										 $(this).parents('.dropdown').find('input').attr('value', $(this).attr('id'));
+								 });
+								/*End Dropdown Menu*/
+
+
+								$('.dropdown-menu li').click(function () {
+										var input = '<strong>' + $(this).parents('.dropdown').find('input').val() + '</strong>',
+									 	msg = '<span class="msg">Hidden input value: ';
+									 	$('.msg').html(msg + input + '</span>');
+								});
+								 </script>
+
 						</div>
+
+
 				{% endfor %}
 			</aside>
 
