@@ -1448,3 +1448,17 @@ center h2 {
 	margin-top: 5px;
 	margin-left: 25px;
 }
+
+/* Styles for filter_block */
+#filter_block {
+	margin-top: 35px;
+	margin-left: 1%;
+	padding: 10px;
+	float: left;
+	width: 15%;
+	min-height: 100px;
+	background-color: #f7f7f7;
+	border-radius: 15px;
+	display: block;
+	clear: right;
+}
