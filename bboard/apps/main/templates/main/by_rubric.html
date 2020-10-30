@@ -11,6 +11,13 @@
 
 {% block content %}
 
+<div id="filter_block">
+		<form method="get" >
+			{{ form }}
+			<input type="submit" value="Submit" />
+		</form>
+</div>
+
 <div id="articles">
 	<h2 id="rubric_name">{{ rubric }}</h2>
 	{% if bbs %}
