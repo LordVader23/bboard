@@ -112,7 +112,9 @@ class SubRubricForm(forms.ModelForm):
 
 
 class SearchForm(forms.Form):
-    keyword = forms.CharField(required=False, max_length=20, label='')
+    keyword = forms.CharField(required=False, max_length=20, label='Ключевое слово')
+    price_from = forms.IntegerField(required=False, min_value=0, max_value=1000000, label='Цена от')
+    price_to = forms.IntegerField(required=False, min_value=0, max_value=1000000, label='Цена до')
 
 
 class BbForm(forms.ModelForm):
