@@ -1452,10 +1452,10 @@ center h2 {
 /* Styles for filter_block */
 #filter_block {
 	margin-top: 35px;
-	margin-left: 1%;
+	margin-left: 4%;
 	padding: 10px;
 	float: left;
-	width: 15%;
+	width: 65%;
 	min-height: 100px;
 	background-color: #f7f7f7;
 	border-radius: 15px;
