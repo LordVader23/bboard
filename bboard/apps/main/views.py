@@ -55,10 +55,11 @@ from .forms import AnswerChangeForm
 from .utilities import signer, remember_user
 
 import re
+import builtins
 
 
 def index(request):
-    bbs = Bb.objects.all()[:10]
+    bbs = Bb.objects.all()
 
     if 'page' in request.GET:
         page_num = request.GET['page']
@@ -77,15 +78,43 @@ def by_rubric(request, pk):
     rubric = get_object_or_404(SubRubric, pk=pk)
     bbs = Bb.objects.filter(rubric=pk)
 
-    if 'keyword' in request.GET:
-        keyword = request.GET['keyword']
-        q = Q(title__icontains=keyword) | Q(content__icontains=keyword)
-        bbs = bbs.filter(q)
-    else:
-        keyword = ''
+    initial = {}  # To initialize form
+    get_copy = request.GET
 
-    form = SearchForm(initial={'keyword': keyword})
-    paginator = Paginator(bbs, 2)
+    if 'page' in request.GET:
+        del get_copy[builtins.index('page')]  # Used builtins cause there is func index declared before
+
+    for param in get_copy:  # To filter articles
+        if param in request.GET:
+            if request.GET[param]:
+                if param == 'keyword':
+                    keyword = request.GET['keyword']
+                    q = Q(title__icontains=keyword) | Q(content__icontains=keyword)
+                    bbs = bbs.filter(q)
+                    initial['keyword'] = keyword
+                elif param == 'price_from':  # To find out if price_from bigger(or equal) than price_to
+                    if 'price_to' in request.GET:
+                        if request.GET['price_to']:
+                            if request.GET['price_from'] >= request.GET['price_to']:
+                                bbs = []
+                                break
+
+                    price_from = request.GET[param]
+                    q = Q(price__gte=price_from)
+                    bbs = bbs.filter(q)
+                    initial['price_from'] = price_from
+                elif param == 'price_to':
+                    price_to = request.GET[param]
+                    q = Q(price__lte=price_to)
+                    bbs = bbs.filter(q)
+                    initial['price_to'] = price_to
+
+    if len(initial) > 0:
+        form = SearchForm(initial=initial)
+    else:
+        form = SearchForm()
+
+    paginator = Paginator(bbs, 3)
 
     if 'page' in request.GET:
         page_num = request.GET['page']
