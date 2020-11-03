@@ -12,9 +12,18 @@
 {% block content %}
 
 <div id="filter_block">
-		<form method="get" >
-			{{ form }}
-			<input type="submit" value="Submit" />
+		<form method="get" id="filter_form">
+			{% for hidden in form.hidden_fields %}
+				{{ hidden }}
+			{% endfor %}
+			{% for field in form.visible_fields %}
+				<div class="filter_elem">
+					{{ field.label_tag }}
+					{{ field }}
+					<!--<span class="helptext">{{ field.help_text }}</span>-->
+				</div>
+			{% endfor %}
+			<input type="submit" value="Применить" />
 		</form>
 </div>
 
