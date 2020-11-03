@@ -55,7 +55,6 @@ from .forms import AnswerChangeForm
 from .utilities import signer, remember_user
 
 import re
-import builtins
 
 
 def index(request):
@@ -79,10 +78,10 @@ def by_rubric(request, pk):
     bbs = Bb.objects.filter(rubric=pk)
 
     initial = {}  # To initialize form
-    get_copy = request.GET
+    get_copy = request.GET.copy()
 
     if 'page' in request.GET:
-        del get_copy[builtins.index('page')]  # Used builtins cause there is func index declared before
+        del get_copy['page']
 
     for param in get_copy:  # To filter articles
         if param in request.GET:
