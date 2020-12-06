@@ -153,6 +153,14 @@ class Answers(models.Model):
         ordering = ['created_at']
 
 
+class FeedBack(models.Model):
+    author = models.CharField(max_length=50, verbose_name='Имя')
+    text = models.TextField(max_length=200, verbose_name='Текст')
+
+    class Meta:
+        verbose_name = 'Обратная связь'
+
+
 def post_save_dispatcher(sender, **kwargs):
     author = kwargs['instance'].bb.author
 

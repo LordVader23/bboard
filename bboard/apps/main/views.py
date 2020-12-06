@@ -52,6 +52,7 @@ from .forms import LoginUserForm
 from .forms import CommentChangeForm
 from .forms import CommentAddAnswer
 from .forms import AnswerChangeForm
+from .forms import AddFeedBackForm
 from .utilities import signer, remember_user
 
 import re
@@ -173,6 +174,23 @@ def detail(request, rubric_pk, pk):
     context = {'bb': bb, 'ais': ais, 'comments': comments, 'form': form}
 
     return render(request, 'main/detail.html', context)
+
+
+def feedback_page(request):
+    if request.method == "POST":
+        form = AddFeedBackForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            messages.add_message(request, messages.SUCCESS, 'Фидбек отправлен!')
+
+            return redirect('main:index')
+    else:
+        form = AddFeedBackForm(initial={'author': request.user.first_name})
+
+    context = {'form': form, }
+
+    return render(request, 'main/feedback.html', context)
 
 
 def other_page(request, page):

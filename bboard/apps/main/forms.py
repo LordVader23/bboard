@@ -8,6 +8,7 @@ from .models import SuperRubric, SubRubric
 from .models import Bb, AdditionalImage
 from .models import Comment
 from .models import Answers
+from .models import FeedBack
 
 from captcha.fields import CaptchaField
 
@@ -165,3 +166,9 @@ class AnswerChangeForm(forms.ModelForm):
         model = Answers
         exclude = ('is_active', )
         widgets = {'author': forms.HiddenInput, 'comment': forms.HiddenInput, }
+
+
+class AddFeedBackForm(forms.ModelForm):
+    class Meta:
+        model = FeedBack
+        fields = ('author', 'text', )

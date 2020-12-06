@@ -18,6 +18,7 @@ from .views import comment_change
 from .views import comment_add_answer
 from .views import answer_change
 from .views import answer_add_answer
+from .views import feedback_page
 
 
 app_name = 'main'
@@ -44,6 +45,7 @@ urlpatterns = [
     path('answer/add_answer/<int:comment_id>/<int:answer_id>/', answer_add_answer, name='answer_add_answer'),
     path('<int:rubric_pk>/<int:pk>/', detail, name='detail'),
     path('<int:pk>/', by_rubric, name='by_rubric'),
+    path('feedback/', feedback_page, name='feedback_page'),
     path('<str:page>/', other_page, name='other'),
     path('', index, name='index'),
 ]
