@@ -65,7 +65,7 @@ def index(request):
     else:
         page_num = 1
 
-    paginator = Paginator(bbs, 2)
+    paginator = Paginator(bbs, 9)
     page = paginator.get_page(page_num)
 
     context = {'bbs': bbs, 'page': page}

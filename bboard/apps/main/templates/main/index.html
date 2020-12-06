@@ -6,7 +6,7 @@
 {% block content %}
 	<div id="articles">
 		{% url 'main:detail' rubric_pk=rubric.pk pk=bb.pk as url %}
-		{% for bb in bbs %}
+		{% for bb in page %}
 			<article>
 				{% if bb.image %}
 				<img src="{{ bb.image.url }}" alt="image">
