@@ -1492,3 +1492,60 @@ center h2 {
 	width: 20%;
 	margin-left: 2%;
 }
+
+/* Styles for feedback page */
+#feedback {
+	min-height: 500px;
+	width: 60%;
+	margin-left: 20%;
+	margin-top: 35px;
+	border-radius: 15px;
+	background-color: #f7f7f7;
+	padding: 10px;
+}
+
+#feedback h2 {
+	margin-left: 25px;
+}
+
+#feedback p {
+	margin-left: 25px;
+	margin-top: 10px;
+}
+
+#feedback form {
+	background-color: inherit;
+	display: inherit;
+	float: left;
+	margin-left: 25px;
+}
+
+#feedback form input[type=text] {
+	float: left;
+	font-size: 1.1em;
+	padding: 5px;
+	margin-top: 15px;
+	border: 2px solid silver;
+	border-radius: 7px;
+	clear: both;
+}
+
+#feedback form input[type=text]:hover {
+	border: 2px solid red;
+}
+
+#feedback form input[type=submit] {
+	float: left;
+	margin-top: 25px;
+	font-size: 1.1em;
+	padding: 5px;
+	border: 2px solid silver;
+	border-radius: 7px;
+	clear: both;
+}
+
+#feedback form input[type=submit]:hover {
+	color: white;
+	background-color: red;
+	border: 2px solid red;
+}
