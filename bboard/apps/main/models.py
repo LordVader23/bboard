@@ -158,7 +158,8 @@ class FeedBack(models.Model):
     text = models.TextField(max_length=200, verbose_name='Текст')
 
     class Meta:
-        verbose_name = 'Обратная связь'
+        verbose_name_plural = 'Feedbacks'
+        verbose_name = 'Feedback'
 
 
 def post_save_dispatcher(sender, **kwargs):

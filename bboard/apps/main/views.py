@@ -186,7 +186,7 @@ def feedback_page(request):
 
             return redirect('main:index')
     else:
-        form = AddFeedBackForm(initial={'author': request.user.first_name})
+        form = AddFeedBackForm(initial={'author': request.user.username})
 
     context = {'form': form, }
 

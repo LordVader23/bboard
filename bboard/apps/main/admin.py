@@ -6,6 +6,7 @@ from .models import SuperRubric, SubRubric
 from .models import Bb, AdditionalImage
 from .models import Comment
 from .models import Answers
+from .models import FeedBack
 from .utilities import send_activation_notification
 from .forms import SubRubricForm
 
@@ -95,9 +96,15 @@ class AnswersAdmin(admin.ModelAdmin):
     readonly_fields = ('author', 'content', 'is_active')
 
 
+class FeedBackAdmin(admin.ModelAdmin):
+    list_display = ('author', 'text')
+    readonly_fields = ('author', 'text')
+
+
 admin.site.register(Bb, BbAdmin)
 admin.site.register(SubRubric, SubRubricAdmin)
 admin.site.register(SuperRubric, SuperRubricAdmin)
 admin.site.register(AdvUser, AdvUserAdmin)
 admin.site.register(Comment, CommentAdmin)
 admin.site.register(Answers, AnswersAdmin)
+admin.site.register(FeedBack, FeedBackAdmin)
